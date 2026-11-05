@@ -926,3 +926,55 @@ footer p {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* Scroll reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Active navigation */
+.navbar nav a.active {
+  color: #00d4ff;
+  position: relative;
+}
+
+.navbar nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #00d4ff, #8b5cf6);
+  border-radius: 10px;
+}
+
+/* Typing heading cursor */
+.hero h2 {
+  min-height: 3.4em;
+  color: #b9c5db;
+}
+
+/* Smooth card animations */
+.skill-card,
+.project-card,
+.glass-card,
+.contact-card {
+  will-change: transform;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
