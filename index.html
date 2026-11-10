@@ -1,476 +1,796 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Harsh Baraiya | Robotics & AI Developer</title>
+<title>Harsh Baraiya | Portfolio</title>
+<meta name="description" content="Harsh Baraiya - BTech CSE student, aspiring robotics engineer, Python developer and creative video editor.">
+<meta name="theme-color" content="#080b12">
 
-    <meta name="description"
-          content="Harsh Baraiya - BTech CSE student, aspiring Robotics Engineer and AI developer. Explore my projects, skills and journey.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <meta name="theme-color" content="#080b12">
+<style>
+:root {
+  --bg: #080b12;
+  --surface: #101622;
+  --surface2: #151e2d;
+  --text: #f4f7ff;
+  --muted: #9aa8bd;
+  --accent: #67e8f9;
+  --purple: #a78bfa;
+  --border: rgba(255,255,255,.09);
+}
 
-    <link rel="stylesheet" href="style.css">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-          rel="stylesheet">
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: min(1120px, 90%);
+  margin: auto;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(8,11,18,.88);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  color: var(--muted);
+  transition: .3s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.menu-btn {
+  display: none;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: white;
+  font-size: 22px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.hero {
+  min-height: 88vh;
+  display: grid;
+  grid-template-columns: 1.3fr .7fr;
+  align-items: center;
+  gap: 50px;
+  padding: 80px 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  background: rgba(103,232,249,.08);
+  filter: blur(100px);
+  top: 15%;
+  left: 10%;
+  z-index: -1;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 7vw, 76px);
+  line-height: 1.05;
+  letter-spacing: -4px;
+  margin-bottom: 18px;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--accent), var(--purple));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero h2 {
+  font-size: clamp(19px, 3vw, 28px);
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
+.hero p {
+  color: var(--muted);
+  line-height: 1.9;
+  max-width: 580px;
+  font-size: 15px;
+}
+
+.buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.btn {
+  padding: 13px 22px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  display: inline-block;
+  transition: .3s;
+}
+
+.btn-primary {
+  color: #071016;
+  background: var(--accent);
+}
+
+.btn-outline {
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-frame {
+  width: 300px;
+  height: 360px;
+  border-radius: 30px;
+  padding: 8px;
+  background: linear-gradient(145deg, var(--accent), var(--purple));
+  transform: rotate(2deg);
+  box-shadow: 0 20px 80px rgba(103,232,249,.12);
+}
+
+.profile-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+  background: var(--surface);
+}
+
+section {
+  padding: 95px 0;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-label {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-heading h2 {
+  font-size: clamp(30px, 5vw, 44px);
+  letter-spacing: -1.5px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  margin-top: 14px;
+}
+
+.about-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 35px;
+  border-radius: 20px;
+  line-height: 1.9;
+  color: var(--muted);
+}
+
+.about-card strong {
+  color: var(--text);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.skill-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 26px;
+  border-radius: 18px;
+  transition: .3s;
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(103,232,249,.4);
+  background: var(--surface2);
+}
+
+.skill-card-icon {
+  font-size: 30px;
+  margin-bottom: 18px;
+}
+
+.skill-card h3 {
+  font-size: 18px;
+  margin-bottom: 14px;
+}
+
+.skill-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.skill-tags span {
+  background: rgba(103,232,249,.08);
+  color: var(--accent);
+  border: 1px solid rgba(103,232,249,.15);
+  border-radius: 7px;
+  padding: 7px 10px;
+  font-size: 11px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 28px;
+  border-radius: 18px;
+  transition: .3s;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--purple);
+}
+
+.project-number {
+  color: var(--accent);
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.project-card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.project-card p {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 13px;
+}
+
+.project-tags {
+  margin-top: 20px;
+  color: var(--purple);
+  font-size: 12px;
+}
+
+.timeline {
+  max-width: 700px;
+  margin: auto;
+  border-left: 2px solid rgba(103,232,249,.3);
+  padding-left: 28px;
+}
+
+.timeline-item {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+  left: -35px;
+  top: 30px;
+}
+
+.timeline-item h3 {
+  margin-bottom: 10px;
+}
+
+.timeline-item p {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.contact-card {
+  text-align: center;
+  background: linear-gradient(145deg, var(--surface), #111a2b);
+  border: 1px solid var(--border);
+  padding: 45px 25px;
+  border-radius: 24px;
+}
+
+.contact-card p {
+  color: var(--muted);
+  margin: 20px 0;
+  line-height: 1.8;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.contact-links a {
+  border: 1px solid var(--border);
+  padding: 12px 18px;
+  border-radius: 9px;
+  color: var(--accent);
+  font-size: 13px;
+  transition: .3s;
+}
+
+.contact-links a:hover {
+  background: var(--accent);
+  color: #071016;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 25px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 850px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    min-height: auto;
+  }
+
+  .hero p {
+    margin: auto;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+
+  .hero-image {
+    grid-row: 1;
+  }
+
+  .profile-frame {
+    width: 230px;
+    height: 280px;
+  }
+
+  .skills-grid,
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    height: 65px;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: var(--surface);
+    flex-direction: column;
+    gap: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hero h1 {
+    letter-spacing: -2px;
+  }
+
+  section {
+    padding: 65px 0;
+  }
+
+  .skills-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-card {
+    padding: 25px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
-    <header class="header">
-        <nav class="navbar">
-            <a href="#home" class="logo">
-                HARSH<span>.</span>
-            </a>
+<header>
+  <div class="container navbar">
+    <a href="#home" class="logo">HARSH<span>.</span></a>
 
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
 
-            <a href="#contact" class="nav-btn">Let's Connect ↗</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
-            <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
-                ☰
-            </button>
-        </nav>
-    </header>
+<main>
 
-    <!-- HERO -->
-    <section class="hero" id="home">
+<section class="hero container" id="home">
+  <div class="hero-content reveal">
+    <div class="eyebrow">Available for learning & opportunities</div>
 
-        <div class="hero-bg"></div>
+    <h1>Hi, I'm <span class="gradient-text">Harsh Baraiya</span></h1>
 
-        <div class="hero-content">
-            <div class="hero-badge">
-                <span class="status-dot"></span>
-                AVAILABLE FOR LEARNING & OPPORTUNITIES
-            </div>
+    <h2>Aspiring Robotics Engineer</h2>
 
-            <p class="hero-intro">HELLO, I'M</p>
+    <p>
+      I'm a BTech Computer Science student passionate about technology,
+      robotics, Python development, AI and creative digital work.
+      I love learning new skills and building projects that solve real problems.
+    </p>
 
-            <h1>
-                Harsh<br>
-                <span>Baraiya.</span>
-            </h1>
+    <div class="buttons">
+      <a href="#projects" class="btn btn-primary">Explore My Projects ↗</a>
+      <a href="#contact" class="btn btn-outline">Let's Connect</a>
+    </div>
+  </div>
 
-            <h2 class="hero-role">
-                Aspiring <span id="typingText">Robotics Engineer</span>
-            </h2>
+  <div class="hero-image reveal">
+    <div class="profile-frame">
+      <img src="profile.jpg.png" alt="Harsh Baraiya profile photo">
+    </div>
+  </div>
+</section>
 
-            <p class="hero-description">
-                Building the future with code, artificial intelligence
-                and robotics. I am a Computer Science student passionate
-                about turning ideas into real-world technology.
-            </p>
+<section id="about">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="section-label">About Me</div>
+      <h2>Building My <span class="gradient-text">Future</span></h2>
+      <p>A curious learner with a passion for technology.</p>
+    </div>
 
-            <div class="hero-buttons">
-                <a href="#projects" class="primary-btn">
-                    Explore My Work <span>↗</span>
-                </a>
+    <div class="about-card reveal">
+      <p>
+        Hello! I'm <strong>Harsh Baraiya</strong>, a BTech CSE student
+        at <strong>SRCEM, affiliated with RGPV</strong>.
+        My goal is to become a Robotics Engineer and explore the world
+        of intelligent machines, software development and automation.
+        <br><br>
+        I'm currently developing my skills in programming, databases,
+        productivity tools and video editing. I believe in continuous
+        learning, practical projects and improving myself every day.
+      </p>
+    </div>
+  </div>
+</section>
 
-                <a href="#contact" class="secondary-btn">
-                    Get In Touch
-                </a>
-            </div>
-
-            <div class="hero-socials">
-                <a href="https://github.com/harshbaraiya439-cyber"
-                   target="_blank" rel="noopener noreferrer">
-                    GitHub ↗
-                </a>
-
-                <a href="https://www.linkedin.com/in/harsh-baraiya-a105b33b8/"
-                   target="_blank" rel="noopener noreferrer">
-                    LinkedIn ↗
-                </a>
-            </div>
-        </div>
-
-        <div class="hero-visual">
-            <div class="orbit orbit-one"></div>
-            <div class="orbit orbit-two"></div>
-
-            <div class="hero-image-frame">
-                <img src="profile.jpg.png"
-                     alt="Harsh Baraiya"
-                     class="hero-image">
-            </div>
-
-            <div class="floating-card card-top">
-                <span class="floating-icon">🤖</span>
-                <div>
-                    <strong>Robotics</strong>
-                    <small>Future Engineer</small>
-                </div>
-            </div>
-
-            <div class="floating-card card-bottom">
-                <span class="floating-icon">💻</span>
-                <div>
-                    <strong>Computer Science</strong>
-                    <small>Developer in Progress</small>
-                </div>
-            </div>
-        </div>
-
-        <div class="hero-scroll">
-            <span></span>
-            SCROLL TO EXPLORE
-        </div>
-
-    </section>
-
-    <!-- ABOUT -->
-    <section class="section about-section" id="about">
-
-        <div class="section-heading">
-            <span class="section-label">01 — ABOUT ME</span>
-            <h2>Curiosity drives me.<br><span>Technology inspires me.</span></h2>
-        </div>
-
-        <div class="about-grid">
-
-            <div class="about-text">
-                <p>
-                    I'm Harsh Baraiya, a BTech Computer Science and
-                    Engineering student with a strong interest in
-                    Artificial Intelligence, Robotics and software development.
-                </p>
-
-                <p>
-                    My goal is to combine software and intelligent systems
-                    to create useful technologies. I enjoy learning new
-                    tools, exploring innovative ideas and building projects
-                    that improve my technical skills.
-                </p>
-
-                <p>
-                    Currently, I am focused on strengthening my programming
-                    fundamentals and moving toward my dream of becoming
-                    a Robotics Engineer.
-                </p>
-
-                <a href="#contact" class="text-link">
-                    Let's build something meaningful ↗
-                </a>
-            </div>
-
-            <div class="about-cards">
-
-                <div class="info-card">
-                    <span class="info-icon">🎓</span>
-                    <h3>BTech CSE</h3>
-                    <p>Computer Science Student</p>
-                </div>
-
-                <div class="info-card">
-                    <span class="info-icon">🤖</span>
-                    <h3>Robotics</h3>
-                    <p>Career Aspiration</p>
-                </div>
-
-                <div class="info-card">
-                    <span class="info-icon">🧠</span>
-                    <h3>AI & Technology</h3>
-                    <p>Exploring Intelligent Systems</p>
-                </div>
-
-                <div class="info-card">
-                    <span class="info-icon">🚀</span>
-                    <h3>Growth Mindset</h3>
-                    <p>Learning Through Projects</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-  
-<!-- SKILLS -->
-<section class="section skills-section" id="skills">
-
-    <div class="section-heading">
-        <span class="section-label">02 — MY SKILLS</span>
-        <h2>My technical <span>toolkit.</span></h2>
-        <p>Technologies and tools I am learning to build my future.</p>
+<section id="skills">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="section-label">My Skills</div>
+      <h2>Tools I <span class="gradient-text">Work With</span></h2>
+      <p>Skills I'm learning and using to build my future.</p>
     </div>
 
     <div class="skills-grid">
 
-        <div class="skill-card">
-            <div class="skill-card-icon">🐍</div>
-            <h3>Programming</h3>
-            <div class="skill-tags">
-                <span>Python</span>
-                <span>C</span>
-                <span>C++</span>
-            </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-icon">💻</div>
+        <h3>Programming</h3>
+        <div class="skill-tags">
+          <span>Python</span>
+          <span>C</span>
+          <span>C++</span>
+          <span>DSA Basics</span>
         </div>
+      </div>
 
-        <div class="skill-card">
-            <div class="skill-card-icon">📊</div>
-            <h3>Microsoft Excel</h3>
-            <div class="skill-tags">
-                <span>Excel</span>
-                <span>Data Analysis</span>
-                <span>Spreadsheets</span>
-            </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-icon">🗄️</div>
+        <h3>Database</h3>
+        <div class="skill-tags">
+          <span>MySQL</span>
+          <span>SQL Queries</span>
+          <span>DBMS Basics</span>
         </div>
+      </div>
 
-        <div class="skill-card">
-            <div class="skill-card-icon">🗄️</div>
-            <h3>Database Management</h3>
-            <div class="skill-tags">
-                <span>MySQL</span>
-                <span>SQL Queries</span>
-                <span>DBMS</span>
-            </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-icon">📊</div>
+        <h3>Productivity</h3>
+        <div class="skill-tags">
+          <span>MS Excel</span>
+          <span>MS Word</span>
+          <span>PowerPoint</span>
         </div>
+      </div>
 
-        <div class="skill-card">
-            <div class="skill-card-icon">🎬</div>
-            <h3>Video Editing</h3>
-            <div class="skill-tags">
-                <span>Video Editing</span>
-                <span>Reels</span>
-                <span>Content Creation</span>
-            </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-icon">🎬</div>
+        <h3>Video Editing</h3>
+        <div class="skill-tags">
+          <span>Video Editing</span>
+          <span>Reels</span>
+          <span>Content Creation</span>
         </div>
+      </div>
 
-        <div class="skill-card">
-            <div class="skill-card-icon">🧩</div>
-            <h3>Core Computer Science</h3>
-            <div class="skill-tags">
-                <span>DSA</span>
-                <span>OOP</span>
-                <span>Problem Solving</span>
-            </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-icon">🛠️</div>
+        <h3>Developer Tools</h3>
+        <div class="skill-tags">
+          <span>Git</span>
+          <span>GitHub</span>
+          <span>VS Code</span>
         </div>
+      </div>
 
-        <div class="skill-card">
-            <div class="skill-card-icon">🛠️</div>
-            <h3>Developer Tools</h3>
-            <div class="skill-tags">
-                <span>Git</span>
-                <span>GitHub</span>
-                <span>VS Code</span>
-            </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-icon">🤖</div>
+        <h3>AI & Robotics</h3>
+        <div class="skill-tags">
+          <span>AI Tools</span>
+          <span>Robotics Basics</span>
+          <span>Automation</span>
         </div>
+      </div>
 
     </div>
+  </div>
 </section>
 
+<section id="projects">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="section-label">My Work</div>
+      <h2>Featured <span class="gradient-text">Projects</span></h2>
+      <p>Some projects from my learning journey.</p>
+    </div>
 
-    <!-- PROJECTS -->
-    <section class="section projects-section" id="projects">
+    <div class="projects-grid">
 
-        <div class="section-heading">
-            <span class="section-label">03 — MY PROJECTS</span>
-            <h2>Ideas into <span>reality.</span></h2>
-            <p>A collection of projects from my development journey.</p>
-        </div>
-
-        <div class="projects-grid">
-
-            <article class="project-card">
-                <div class="project-visual project-visual-one">
-                    <div class="project-symbol">✦</div>
-                    <span>AI / PYTHON</span>
-                </div>
-
-                <div class="project-content">
-                    <span class="project-number">PROJECT 01</span>
-                    <h3>Ziva — Personal AI Assistant</h3>
-
-                    <p>
-                        A personal AI assistant project built using Python
-                        and a Tkinter interface, designed to explore
-                        AI-powered interactions.
-                    </p>
-
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>Tkinter</span>
-                        <span>Gemini API</span>
-                    </div>
-
-                    <a href="https://github.com/harshbaraiya439-cyber"
-                       target="_blank" rel="noopener noreferrer"
-                       class="project-link">
-                        View GitHub ↗
-                    </a>
-                </div>
-            </article>
-
-            <article class="project-card">
-                <div class="project-visual project-visual-two">
-                    <div class="project-symbol">⌘</div>
-                    <span>WEB DEVELOPMENT</span>
-                </div>
-
-                <div class="project-content">
-                    <span class="project-number">PROJECT 02</span>
-                    <h3>Personal Portfolio</h3>
-
-                    <p>
-                        A personal portfolio website showcasing my
-                        skills, projects, education and journey
-                        as a CSE student.
-                    </p>
-
-                    <div class="project-tags">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                    </div>
-
-                    <a href="https://github.com/harshbaraiya439-cyber/Harsh-portfolio"
-                       target="_blank" rel="noopener noreferrer"
-                       class="project-link">
-                        View Repository ↗
-                    </a>
-                </div>
-            </article>
-
-            <article class="project-card">
-                <div class="project-visual project-visual-three">
-                    <div class="project-symbol">⌁</div>
-                    <span>PYTHON</span>
-                </div>
-
-                <div class="project-content">
-                    <span class="project-number">PROJECT 03</span>
-                    <h3>Python Mini Projects</h3>
-
-                    <p>
-                        Small Python experiments and mini projects
-                        created while developing my programming
-                        and problem-solving fundamentals.
-                    </p>
-
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>Logic</span>
-                        <span>Learning</span>
-                    </div>
-
-                    <a href="https://github.com/harshbaraiya439-cyber"
-                       target="_blank" rel="noopener noreferrer"
-                       class="project-link">
-                        Explore GitHub ↗
-                    </a>
-                </div>
-            </article>
-
-        </div>
-    </section>
-
-    <!-- EDUCATION -->
-    <section class="section education-section" id="education">
-
-        <div class="section-heading">
-            <span class="section-label">04 — EDUCATION</span>
-            <h2>My learning <span>journey.</span></h2>
-        </div>
-
-        <div class="timeline">
-
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-
-                <div class="timeline-card">
-                    <span class="timeline-date">CURRENT</span>
-                    <h3>Bachelor of Technology — CSE</h3>
-                    <h4>SRCEM / RGPV</h4>
-
-                    <p>
-                        Pursuing Computer Science and Engineering,
-                        learning programming, computer science
-                        fundamentals and emerging technologies.
-                    </p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-
-                <div class="timeline-card">
-                    <span class="timeline-date">PREVIOUS</span>
-                    <h3>Higher Secondary Education</h3>
-                    <h4>School Education</h4>
-
-                    <p>
-                        Built the foundation for my academic journey
-                        and interest in computer science.
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section contact-section" id="contact">
-
-        <div class="contact-box">
-
-            <span class="section-label">05 — CONTACT</span>
-
-            <h2>Have an idea?<br><span>Let's connect.</span></h2>
-
-            <p>
-                I am always open to connecting with fellow developers,
-                students and technology enthusiasts.
-            </p>
-
-            <a href="mailto:Harshbaraiya439@gmail.com"
-               class="primary-btn">
-                Send Me an Email ↗
-            </a>
-
-            <div class="contact-links">
-                <a href="https://github.com/harshbaraiya439-cyber"
-                   target="_blank" rel="noopener noreferrer">
-                    GitHub
-                </a>
-
-                <a href="https://www.linkedin.com/in/harsh-baraiya-a105b33b8/"
-                   target="_blank" rel="noopener noreferrer">
-                    LinkedIn
-                </a>
-
-                <a href="mailto:Harshbaraiya439@gmail.com">
-                    Email
-                </a>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <a href="#home" class="logo">HARSH<span>.</span></a>
-
+      <div class="project-card reveal">
+        <div class="project-number">PROJECT 01</div>
+        <h3>Ziva AI Assistant</h3>
         <p>
-            Designed & built by Harsh Baraiya
+          A personal AI assistant concept built with Python and Tkinter
+          to explore AI-powered desktop applications.
         </p>
+        <div class="project-tags">Python · Tkinter · AI</div>
+      </div>
 
+      <div class="project-card reveal">
+        <div class="project-number">PROJECT 02</div>
+        <h3>Personal Portfolio</h3>
         <p>
-            © <span id="year"></span> All Rights Reserved.
+          A responsive portfolio website to showcase my skills,
+          projects, education and journey as a CSE student.
         </p>
-    </footer>
+        <div class="project-tags">HTML · CSS · JavaScript</div>
+      </div>
 
-    <script src="script.js"></script>
+      <div class="project-card reveal">
+        <div class="project-number">PROJECT 03</div>
+        <h3>Python Mini Projects</h3>
+        <p>
+          Small programming projects created to strengthen my
+          coding fundamentals and problem-solving skills.
+        </p>
+        <div class="project-tags">Python · Programming</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="section-label">Education</div>
+      <h2>My <span class="gradient-text">Journey</span></h2>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <h3>BTech – Computer Science & Engineering</h3>
+        <p>
+          SRCEM · RGPV, Madhya Pradesh<br>
+          Currently pursuing BTech CSE.
+        </p>
+      </div>
+
+      <div class="timeline-item reveal">
+        <h3>Future Goal – Robotics Engineer</h3>
+        <p>
+          Working towards a career in robotics, intelligent systems,
+          automation and software development.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="section-label">Contact</div>
+      <h2>Let's <span class="gradient-text">Connect</span></h2>
+    </div>
+
+    <div class="contact-card reveal">
+      <h2>Have an idea or opportunity?</h2>
+      <p>
+        Feel free to connect with me for collaborations,
+        projects, learning and opportunities.
+      </p>
+
+      <div class="contact-links">
+        <a href="mailto:Harshbaraiya439@gmail.com">Email Me ↗</a>
+        <a href="https://github.com/harshbaraiya439-cyber"
+           target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/harsh-baraiya-a105b33b8/"
+           target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    © <span id="year"></span> Harsh Baraiya · Designed with passion.
+  </div>
+</footer>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+  });
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    } else {
+      entry.target.classList.remove("visible");
+    }
+  });
+}, {
+  threshold: 0.12
+});
+
+document.querySelectorAll(".reveal").forEach(element => {
+  observer.observe(element);
+});
+</script>
 
 </body>
 </html>
