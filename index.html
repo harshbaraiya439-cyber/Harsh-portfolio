@@ -22,7 +22,30 @@
   --purple: #a78bfa;
   --border: rgba(255,255,255,.09);
 }
+.hero-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.1;
+}
 
+.intro-text {
+    font-size: 32px;
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.gradient-text {
+    font-size: clamp(48px, 7vw, 82px);
+    font-weight: 800;
+    letter-spacing: -2px;
+    background: linear-gradient(90deg, #ffffff, #00d4ff, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 * {
   margin: 0;
   padding: 0;
@@ -532,7 +555,10 @@ footer {
   <div class="hero-content reveal">
     <div class="eyebrow">Available for learning & opportunities</div>
 
-    <h1>Hi, I'm <span class="gradient-text">Harsh Baraiya</span></h1>
+    <h1 class="hero-title">
+    <span class="intro-text">Hi, I'm</span>
+    <span class="gradient-text">Harsh Baraiya</span>
+</h1>
 
     <h2>Aspiring Robotics Engineer</h2>
 
