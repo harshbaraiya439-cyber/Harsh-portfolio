@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#070b16">
-<meta name="description" content="Harsh Baraiya - CSE Student, Aspiring Robotics Engineer and Technology Enthusiast.">
+<meta name="description" content="Harsh Baraiya - CSE Student and Aspiring Robotics Engineer">
 <title>Harsh Baraiya | Portfolio</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,12 +14,12 @@
 <style>
 :root {
   --bg: #070b16;
-  --card: rgba(12, 19, 36, 0.82);
+  --card: rgba(10, 18, 35, 0.84);
   --blue: #38bdf8;
   --purple: #818cf8;
   --white: #f8fafc;
   --muted: #a5b4c8;
-  --border: rgba(125, 180, 255, 0.18);
+  --border: rgba(125, 180, 255, 0.2);
 }
 
 * {
@@ -31,8 +31,8 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  color: var(--white);
   background: var(--bg);
+  color: var(--white);
   overflow-x: hidden;
 }
 
@@ -50,11 +50,9 @@ a {
 
 header {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  inset: 0 0 auto;
   z-index: 1000;
-  background: rgba(5, 9, 20, 0.82);
+  background: rgba(5, 9, 20, 0.86);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
 }
@@ -78,14 +76,14 @@ header {
 
 .nav-links {
   display: flex;
-  gap: 30px;
+  gap: 28px;
   list-style: none;
 }
 
 .nav-links a {
   font-size: 13px;
   color: #cbd5e1;
-  transition: 0.3s;
+  transition: color 0.3s;
 }
 
 .nav-links a:hover {
@@ -101,7 +99,7 @@ header {
   cursor: pointer;
 }
 
-/* COMMON SECTION */
+/* SECTIONS */
 
 section {
   padding: 100px 0;
@@ -110,7 +108,7 @@ section {
 
 .section-title {
   text-align: center;
-  font-size: clamp(30px, 5vw, 42px);
+  font-size: clamp(30px, 5vw, 44px);
   font-weight: 900;
   margin-bottom: 15px;
 }
@@ -120,10 +118,10 @@ section {
 }
 
 .section-subtitle {
-  color: var(--muted);
   text-align: center;
-  max-width: 600px;
-  margin: 0 auto 50px;
+  color: var(--muted);
+  max-width: 650px;
+  margin: 0 auto 48px;
   line-height: 1.8;
   font-size: 14px;
 }
@@ -137,15 +135,15 @@ section {
   padding-top: 100px;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 75% 50%, rgba(37, 99, 235, 0.20), transparent 45%),
+    radial-gradient(ellipse at 75% 50%, rgba(37, 99, 235, 0.22), transparent 45%),
     linear-gradient(135deg, #070b16, #0a1022 60%, #070b16);
 }
 
 .hero::before {
   content: "";
   position: absolute;
-  width: 500px;
-  height: 500px;
+  width: 450px;
+  height: 450px;
   border-radius: 50%;
   background: rgba(56, 189, 248, 0.08);
   filter: blur(100px);
@@ -157,13 +155,13 @@ section {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
-  gap: 50px;
+  gap: 45px;
   position: relative;
   z-index: 2;
 }
 
 .hero-content {
-  animation: textEnter 1s ease both;
+  animation: heroTextIn 1s ease both;
 }
 
 .hero-tag {
@@ -194,7 +192,6 @@ section {
 .hero h2 {
   font-size: clamp(20px, 3vw, 29px);
   margin-bottom: 20px;
-  color: #e2e8f0;
 }
 
 .typing {
@@ -245,14 +242,14 @@ section {
   box-shadow: 0 0 25px rgba(56, 189, 248, 0.22);
 }
 
-/* ONE HERO PORTRAIT - RIGHT SIDE */
+/* PORTRAIT RIGHT SIDE */
 
 .hero-image {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  animation: imageEnter 1.2s ease both;
+  animation: heroImageIn 1.2s ease both;
 }
 
 .image-glow {
@@ -276,11 +273,11 @@ section {
   animation: floatImage 5s ease-in-out infinite;
 }
 
-/* BACKGROUND IMAGE SECTIONS */
+/* IMAGE BACKGROUND SECTIONS */
 
 .photo-section {
   background-image:
-    linear-gradient(rgba(5, 9, 20, 0.88), rgba(5, 9, 20, 0.92)),
+    linear-gradient(rgba(5, 9, 20, 0.86), rgba(5, 9, 20, 0.92)),
     url("college.jpg");
   background-size: cover;
   background-position: center;
@@ -305,7 +302,7 @@ section {
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 45px;
+  gap: 40px;
   align-items: center;
 }
 
@@ -315,7 +312,6 @@ section {
   border-radius: 18px;
   padding: 35px;
   backdrop-filter: blur(12px);
-  box-shadow: 0 15px 50px rgba(0,0,0,0.2);
 }
 
 .about-card h3 {
@@ -339,8 +335,14 @@ section {
 .highlight {
   padding: 22px;
   border: 1px solid var(--border);
-  background: rgba(10, 18, 35, 0.8);
+  background: rgba(10, 18, 35, 0.82);
   border-radius: 14px;
+  transition: 0.3s;
+}
+
+.highlight:hover {
+  transform: translateY(-5px);
+  border-color: var(--blue);
 }
 
 .highlight h4 {
@@ -378,7 +380,7 @@ section {
   box-shadow: 0 0 25px rgba(56, 189, 248, 0.10);
 }
 
-.skill-card .skill-icon {
+.skill-icon {
   font-size: 30px;
   margin-bottom: 17px;
 }
@@ -432,6 +434,7 @@ section {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-bottom: 20px;
 }
 
 .project-tags span {
@@ -487,6 +490,11 @@ section {
   backdrop-filter: blur(12px);
 }
 
+.contact-card h3 {
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+
 .contact-card p {
   color: var(--muted);
   font-size: 14px;
@@ -512,9 +520,9 @@ footer {
   font-size: 12px;
 }
 
-/* ANIMATIONS */
+/* ANIMATION KEYFRAMES */
 
-@keyframes textEnter {
+@keyframes heroTextIn {
   from {
     opacity: 0;
     transform: translateX(-45px);
@@ -525,7 +533,7 @@ footer {
   }
 }
 
-@keyframes imageEnter {
+@keyframes heroImageIn {
   from {
     opacity: 0;
     transform: translateX(45px) scale(0.95);
@@ -537,12 +545,8 @@ footer {
 }
 
 @keyframes floatImage {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 @keyframes cursorBlink {
@@ -550,12 +554,14 @@ footer {
   50% { border-color: var(--blue); }
 }
 
-/* SCROLL REVEAL */
+/* REPEATING SCROLL REVEAL */
 
 .reveal {
   opacity: 0;
   transform: translateY(35px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
 }
 
 .reveal.active {
@@ -567,7 +573,7 @@ footer {
 
 @media (max-width: 900px) {
   .hero-layout {
-    grid-template-columns: 1fr 0.8fr;
+    grid-template-columns: 1.1fr 0.9fr;
     gap: 25px;
   }
 
@@ -711,7 +717,7 @@ footer {
   </div>
 </header>
 
-<!-- HOME: TEXT LEFT, SINGLE PORTRAIT RIGHT -->
+<!-- HOME -->
 
 <section class="hero" id="home">
   <div class="container hero-layout">
@@ -863,7 +869,6 @@ footer {
         <div class="project-tags">
           <span>HTML</span><span>CSS</span><span>JavaScript</span>
         </div>
-        <br>
         <a class="btn btn-outline"
            href="https://harshbaraiya439-cyber.github.io/Harsh-portfolio/"
            target="_blank" rel="noopener">VIEW PROJECT ↗</a>
@@ -910,22 +915,14 @@ footer {
 <section class="photo-section" id="education">
   <div class="container section-content reveal">
     <h2 class="section-title">My <span>Education</span></h2>
-    <p class="section-subtitle">
-      My academic journey.
-    </p>
+    <p class="section-subtitle">My academic journey.</p>
 
     <div class="education-card">
       <span class="education-label">CURRENTLY PURSUING</span>
       <h3>Bachelor of Technology (BTech)</h3>
-      <p>
-        Computer Science and Engineering (CSE)
-      </p>
-      <p>
-        RGPV - Rajiv Gandhi Proudyogiki Vishwavidyalaya
-      </p>
-      <p>
-        Focus: Computer Science, Programming, Robotics and Technology.
-      </p>
+      <p>Computer Science and Engineering (CSE)</p>
+      <p>RGPV - Rajiv Gandhi Proudyogiki Vishwavidyalaya</p>
+      <p>Focus: Computer Science, Programming, Robotics and Technology.</p>
     </div>
   </div>
 </section>
@@ -940,10 +937,7 @@ footer {
     </p>
 
     <div class="contact-card">
-      <h3 style="font-size:25px; margin-bottom:15px;">
-        Have an idea or opportunity?
-      </h3>
-
+      <h3>Have an idea or opportunity?</h3>
       <p>
         Connect with me through GitHub or LinkedIn.
         Let's learn, build and grow together.
@@ -969,7 +963,7 @@ footer {
 </footer>
 
 <script>
-// MOBILE MENU
+// MOBILE NAVIGATION
 
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
@@ -986,7 +980,7 @@ document.querySelectorAll(".nav-links a").forEach(link => {
   });
 });
 
-// TYPING ANIMATION
+// CONTINUOUS TYPING ANIMATION
 
 const typingElement = document.getElementById("typingText");
 
@@ -1005,19 +999,19 @@ function typeEffect() {
   const currentRole = roles[roleIndex];
 
   if (!deleting) {
-    typingElement.textContent = currentRole.substring(0, charIndex + 1);
     charIndex++;
+    typingElement.textContent = currentRole.substring(0, charIndex);
 
-    if (charIndex === currentRole.length) {
+    if (charIndex >= currentRole.length) {
       deleting = true;
       setTimeout(typeEffect, 1500);
       return;
     }
   } else {
-    typingElement.textContent = currentRole.substring(0, charIndex - 1);
     charIndex--;
+    typingElement.textContent = currentRole.substring(0, charIndex);
 
-    if (charIndex === 0) {
+    if (charIndex <= 0) {
       deleting = false;
       roleIndex = (roleIndex + 1) % roles.length;
     }
@@ -1028,7 +1022,8 @@ function typeEffect() {
 
 typeEffect();
 
-// SCROLL REVEAL ANIMATION
+// REPEATING SCROLL REVEAL ANIMATION
+// Active when entering viewport, reset when leaving viewport.
 
 const revealElements = document.querySelectorAll(".reveal");
 
@@ -1036,7 +1031,8 @@ const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add("active");
-      revealObserver.unobserve(entry.target);
+    } else {
+      entry.target.classList.remove("active");
     }
   });
 }, {
