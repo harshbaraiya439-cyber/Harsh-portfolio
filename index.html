@@ -2,191 +2,453 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Harsh Baraiya - CSE student, aspiring Robotics Engineer, Python developer and AI enthusiast.">
-  <title>Harsh Baraiya | official Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Harsh Baraiya | Robotics & AI Developer</title>
+
+    <meta name="description"
+          content="Harsh Baraiya - BTech CSE student, aspiring Robotics Engineer and AI developer. Explore my projects, skills and journey.">
+
+    <meta name="theme-color" content="#080b12">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
 </head>
+
 <body>
 
-  <header class="navbar">
-    <a href="#home" class="logo">HB<span>.</span></a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
-    <nav id="navMenu">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+    <!-- NAVBAR -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="#home" class="logo">
+                HARSH<span>.</span>
+            </a>
 
-  <main>
-    <section class="hero section" id="home">
-      <div class="hero-content">
-        <span class="tag">👋 Hello, I'm</span>
-        <h1>Harsh <span>Baraiya</span></h1>
-        <h2>BTech CSE Student | Python & AI enthusiast | Aspiring Robotics Engineer</h2>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <a href="#contact" class="nav-btn">Let's Connect ↗</a>
+
+            <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+                ☰
+            </button>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-bg"></div>
+
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="status-dot"></span>
+                AVAILABLE FOR LEARNING & OPPORTUNITIES
+            </div>
+
+            <p class="hero-intro">HELLO, I'M</p>
+
+            <h1>
+                Harsh<br>
+                <span>Baraiya.</span>
+            </h1>
+
+            <h2 class="hero-role">
+                Aspiring <span id="typingText">Robotics Engineer</span>
+            </h2>
+
+            <p class="hero-description">
+                Building the future with code, artificial intelligence
+                and robotics. I am a Computer Science student passionate
+                about turning ideas into real-world technology.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#projects" class="primary-btn">
+                    Explore My Work <span>↗</span>
+                </a>
+
+                <a href="#contact" class="secondary-btn">
+                    Get In Touch
+                </a>
+            </div>
+
+            <div class="hero-socials">
+                <a href="https://github.com/harshbaraiya439-cyber"
+                   target="_blank" rel="noopener noreferrer">
+                    GitHub ↗
+                </a>
+
+                <a href="https://www.linkedin.com/in/harsh-baraiya-a105b33b8/"
+                   target="_blank" rel="noopener noreferrer">
+                    LinkedIn ↗
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+
+            <div class="hero-image-frame">
+                <img src="profile.jpg.png"
+                     alt="Harsh Baraiya"
+                     class="hero-image">
+            </div>
+
+            <div class="floating-card card-top">
+                <span class="floating-icon">🤖</span>
+                <div>
+                    <strong>Robotics</strong>
+                    <small>Future Engineer</small>
+                </div>
+            </div>
+
+            <div class="floating-card card-bottom">
+                <span class="floating-icon">💻</span>
+                <div>
+                    <strong>Computer Science</strong>
+                    <small>Developer in Progress</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-scroll">
+            <span></span>
+            SCROLL TO EXPLORE
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about-section" id="about">
+
+        <div class="section-heading">
+            <span class="section-label">01 — ABOUT ME</span>
+            <h2>Curiosity drives me.<br><span>Technology inspires me.</span></h2>
+        </div>
+
+        <div class="about-grid">
+
+            <div class="about-text">
+                <p>
+                    I'm Harsh Baraiya, a BTech Computer Science and
+                    Engineering student with a strong interest in
+                    Artificial Intelligence, Robotics and software development.
+                </p>
+
+                <p>
+                    My goal is to combine software and intelligent systems
+                    to create useful technologies. I enjoy learning new
+                    tools, exploring innovative ideas and building projects
+                    that improve my technical skills.
+                </p>
+
+                <p>
+                    Currently, I am focused on strengthening my programming
+                    fundamentals and moving toward my dream of becoming
+                    a Robotics Engineer.
+                </p>
+
+                <a href="#contact" class="text-link">
+                    Let's build something meaningful ↗
+                </a>
+            </div>
+
+            <div class="about-cards">
+
+                <div class="info-card">
+                    <span class="info-icon">🎓</span>
+                    <h3>BTech CSE</h3>
+                    <p>Computer Science Student</p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-icon">🤖</span>
+                    <h3>Robotics</h3>
+                    <p>Career Aspiration</p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-icon">🧠</span>
+                    <h3>AI & Technology</h3>
+                    <p>Exploring Intelligent Systems</p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-icon">🚀</span>
+                    <h3>Growth Mindset</h3>
+                    <p>Learning Through Projects</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section skills-section" id="skills">
+
+        <div class="section-heading">
+            <span class="section-label">02 — MY SKILLS</span>
+            <h2>My technical <span>toolkit.</span></h2>
+            <p>Technologies I am learning and using to build my future.</p>
+        </div>
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+                <div class="skill-card-icon">⌨️</div>
+                <h3>Programming</h3>
+                <div class="skill-tags">
+                    <span>C</span>
+                    <span>C++</span>
+                    <span>Python</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-card-icon">🌐</div>
+                <h3>Web Development</h3>
+                <div class="skill-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-card-icon">🧩</div>
+                <h3>Core CS</h3>
+                <div class="skill-tags">
+                    <span>DSA</span>
+                    <span>OOP</span>
+                    <span>DBMS</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-card-icon">🛠️</div>
+                <h3>Tools</h3>
+                <div class="skill-tags">
+                    <span>Git</span>
+                    <span>GitHub</span>
+                    <span>VS Code</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section projects-section" id="projects">
+
+        <div class="section-heading">
+            <span class="section-label">03 — MY PROJECTS</span>
+            <h2>Ideas into <span>reality.</span></h2>
+            <p>A collection of projects from my development journey.</p>
+        </div>
+
+        <div class="projects-grid">
+
+            <article class="project-card">
+                <div class="project-visual project-visual-one">
+                    <div class="project-symbol">✦</div>
+                    <span>AI / PYTHON</span>
+                </div>
+
+                <div class="project-content">
+                    <span class="project-number">PROJECT 01</span>
+                    <h3>Ziva — Personal AI Assistant</h3>
+
+                    <p>
+                        A personal AI assistant project built using Python
+                        and a Tkinter interface, designed to explore
+                        AI-powered interactions.
+                    </p>
+
+                    <div class="project-tags">
+                        <span>Python</span>
+                        <span>Tkinter</span>
+                        <span>Gemini API</span>
+                    </div>
+
+                    <a href="https://github.com/harshbaraiya439-cyber"
+                       target="_blank" rel="noopener noreferrer"
+                       class="project-link">
+                        View GitHub ↗
+                    </a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-visual project-visual-two">
+                    <div class="project-symbol">⌘</div>
+                    <span>WEB DEVELOPMENT</span>
+                </div>
+
+                <div class="project-content">
+                    <span class="project-number">PROJECT 02</span>
+                    <h3>Personal Portfolio</h3>
+
+                    <p>
+                        A personal portfolio website showcasing my
+                        skills, projects, education and journey
+                        as a CSE student.
+                    </p>
+
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+
+                    <a href="https://github.com/harshbaraiya439-cyber/Harsh-portfolio"
+                       target="_blank" rel="noopener noreferrer"
+                       class="project-link">
+                        View Repository ↗
+                    </a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-visual project-visual-three">
+                    <div class="project-symbol">⌁</div>
+                    <span>PYTHON</span>
+                </div>
+
+                <div class="project-content">
+                    <span class="project-number">PROJECT 03</span>
+                    <h3>Python Mini Projects</h3>
+
+                    <p>
+                        Small Python experiments and mini projects
+                        created while developing my programming
+                        and problem-solving fundamentals.
+                    </p>
+
+                    <div class="project-tags">
+                        <span>Python</span>
+                        <span>Logic</span>
+                        <span>Learning</span>
+                    </div>
+
+                    <a href="https://github.com/harshbaraiya439-cyber"
+                       target="_blank" rel="noopener noreferrer"
+                       class="project-link">
+                        Explore GitHub ↗
+                    </a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section education-section" id="education">
+
+        <div class="section-heading">
+            <span class="section-label">04 — EDUCATION</span>
+            <h2>My learning <span>journey.</span></h2>
+        </div>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-card">
+                    <span class="timeline-date">CURRENT</span>
+                    <h3>Bachelor of Technology — CSE</h3>
+                    <h4>SRCEM / RGPV</h4>
+
+                    <p>
+                        Pursuing Computer Science and Engineering,
+                        learning programming, computer science
+                        fundamentals and emerging technologies.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-card">
+                    <span class="timeline-date">PREVIOUS</span>
+                    <h3>Higher Secondary Education</h3>
+                    <h4>School Education</h4>
+
+                    <p>
+                        Built the foundation for my academic journey
+                        and interest in computer science.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact-section" id="contact">
+
+        <div class="contact-box">
+
+            <span class="section-label">05 — CONTACT</span>
+
+            <h2>Have an idea?<br><span>Let's connect.</span></h2>
+
+            <p>
+                I am always open to connecting with fellow developers,
+                students and technology enthusiasts.
+            </p>
+
+            <a href="mailto:Harshbaraiya439@gmail.com"
+               class="primary-btn">
+                Send Me an Email ↗
+            </a>
+
+            <div class="contact-links">
+                <a href="https://github.com/harshbaraiya439-cyber"
+                   target="_blank" rel="noopener noreferrer">
+                    GitHub
+                </a>
+
+                <a href="https://www.linkedin.com/in/harsh-baraiya-a105b33b8/"
+                   target="_blank" rel="noopener noreferrer">
+                    LinkedIn
+                </a>
+
+                <a href="mailto:Harshbaraiya439@gmail.com">
+                    Email
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <a href="#home" class="logo">HARSH<span>.</span></a>
+
         <p>
-          <p>
-I am Harsh Baraiya, a Computer Science and Engineering student interested in Python, Artificial Intelligence, and Robotics. This portfolio showcases my skills, projects, education, and journey as I learn to build practical technology solutions.
-</p>
+            Designed & built by Harsh Baraiya
         </p>
-        <div class="hero-buttons">
-          <a class="btn primary" href="#contact">Let's Connect ↗</a>
-          
-<a class="btn secondary"
-   href="./Harsh_Baraiya_Resume_Designed_v2.pdf"
-   target="_blank" rel="noopener">
-   View Resume ↗
-</a>
 
-        </div>
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/harsh-baraiya-a105b33b8/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="image-glow"></div>
-        <img src="profile.jpg.png" alt="Harsh Baraiya profile photo">
-        <div class="floating-card">💻 CSE Student</div>
-        <div class="floating-card second">🤖 Future Robotics Engineer</div>
-      </div>
-    </section>
+        <p>
+            © <span id="year"></span> All Rights Reserved.
+        </p>
+    </footer>
 
-    <section class="section" id="about">
-      <div class="section-heading">
-        <span class="tag">01 / ABOUT ME</span>
-        <h2>Who am I<span>?</span></h2>
-      </div>
-      <div class="about-grid">
-        <article class="glass-card">
-          <h3>My Introduction</h3>
-          <p>
-            I'm Harsh Baraiya, a BTech Computer Science Engineering student
-            at Shriram College of Engineering and Management (SRCEM), RGPV.
-            I'm interested in coding, AI, automation and robotics. My goal
-            is to develop practical projects and become a Robotics Engineer.
-          </p>
-        </article>
-        <article class="glass-card details">
-          <p><strong>Name:</strong> Harsh Baraiya</p>
-          <p><strong>Email:</strong>
-            <a href="mailto:Harshbaraiya439@gmail.com">Harshbaraiya439@gmail.com</a>
-          </p>
-          <p><strong>Phone:</strong>
-            <a href="tel:+918770675056">+91 8770675056</a>
-          </p>
-          <p><strong>College:</strong> SRCEM, RGPV</p>
-          <p><strong>Degree:</strong> BTech CSE</p>
-          <p><strong>Location:</strong> India</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="skills">
-      <div class="section-heading">
-        <span class="tag">02 / MY SKILLS</span>
-        <h2>Skills & Technologies</h2>
-        <p>Technologies I'm learning and using in my projects.</p>
-      </div>
-      <div class="skills-grid">
-        <div class="skill-card"><span>🐍</span><h3>Python</h3></div>
-        <div class="skill-card"><span>©</span><h3>C Programming</h3></div>
-        <div class="skill-card"><span>🌐</span><h3>HTML</h3></div>
-        <div class="skill-card"><span>🎨</span><h3>CSS</h3></div>
-        <div class="skill-card"><span>⚡</span><h3>JavaScript</h3></div>
-        <div class="skill-card"><span>⌘</span><h3>Git & GitHub</h3></div>
-        <div class="skill-card"><span>🗄️</span><h3>Databases</h3></div>
-        <div class="skill-card"><span>🧠</span><h3>DSA</h3></div>
-        <div class="skill-card"><span>🤖</span><h3>AI & Robotics</h3></div>
-      </div>
-    </section>
-
-    <section class="section" id="projects">
-      <div class="section-heading">
-        <span class="tag">03 / MY WORK</span>
-        <h2>Featured Projects</h2>
-      </div>
-      <div class="projects-grid">
-        <article class="project-card glass-card">
-          <div class="project-icon">🤖</div>
-          <span class="tag">PYTHON · AI</span>
-          <h3>Ziva — Personal AI Assistant</h3>
-          <p>A desktop AI assistant project using Python, Tkinter, voice interaction and local model support.</p>
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">View Project ↗</a>
-        </article>
-        <article class="project-card glass-card">
-          <div class="project-icon">🌐</div>
-          <span class="tag">HTML · CSS · JS</span>
-          <h3>Portfolio Website</h3>
-          <p>A responsive personal website to showcase my skills, education, projects and resume.</p>
-          <a href="#home">Explore Website ↑</a>
-        </article>
-        <article class="project-card glass-card">
-          <div class="project-icon">🐍</div>
-          <span class="tag">PYTHON · BEGINNER</span>
-          <h3>Python Mini Projects</h3>
-          <p>A collection of small coding projects, such as a calculator, quiz app and to-do list.</p>
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">View Projects ↗</a>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="education">
-      <div class="section-heading">
-        <span class="tag">04 / EDUCATION</span>
-        <h2>My Education</h2>
-      </div>
-      <article class="glass-card education-card">
-        <span class="timeline-dot"></span>
-        <span class="tag">2024 — 2028</span>
-        <h3>BTech in Computer Science Engineering</h3>
-        <p>Shriram College of Engineering and Management (SRCEM), RGPV</p>
-        <p class="muted">Currently pursuing undergraduate studies.</p>
-      </article>
-      <article class="glass-card resume-card">
-        <div>
-          <span class="tag">MY RESUME</span>
-          <h3>Want to know more about me?</h3>
-          <p>Download my resume for my education, skills and projects.</p>
-        </div>
-        <a class="btn primary" href="resume.pdf" download>Download PDF ↓</a>
-      </article>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="section-heading">
-        <span class="tag">05 / CONTACT</span>
-        <h2>Let's Build Something <span>Great.</span></h2>
-        <p>Have an idea, a project or an opportunity? Let's connect.</p>
-      </div>
-      <div class="contact-grid">
-        <a class="glass-card contact-card" href="mailto:Harshbaraiya439@gmail.com">
-          ✉️ <span>Email Me</span>
-        </a>
-        <a class="glass-card contact-card" href="tel:+918770675056">
-          📞 <span>Call Me</span>
-        </a>
-        <a class="glass-card contact-card" href="https://www.linkedin.com/in/harsh-baraiya-a105b33b8/" target="_blank" rel="noopener noreferrer">
-          💼 <span>LinkedIn</span>
-        </a>
-        <a class="glass-card contact-card" href="https://github.com/" target="_blank" rel="noopener noreferrer">
-          💻 <span>GitHub</span>
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <a href="#home" class="logo">HB<span>.</span></a>
-    <p>Designed & built by Harsh Baraiya © <span id="year"></span></p>
-    <a href="#home">Back to top ↑</a>
-  </footer>
+    <script src="script.js"></script>
 
 </body>
 </html>
