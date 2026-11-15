@@ -21,11 +21,11 @@
             theme: {
                 extend: {
                     colors: {
-                        neonGreen: '#00ff88',
-                        cyberViolet: '#bd00ff',
-                        darkBg: '#010103',
-                        panelBg: '#080812',
-                        editorRed: '#ff0055'
+                        cyberCyan: '#00f0ff',
+                        cyberPink: '#ff0055',
+                        darkBg: '#030712',
+                        panelBg: '#0b0f19',
+                        accentViolet: '#8b5cf6'
                     },
                     fontFamily: {
                         orbitron: ['Orbitron', 'sans-serif'],
@@ -38,14 +38,14 @@
     </script>
     <style>
         body {
-            background-color: #010103;
+            background-color: #030712;
             color: #ffffff;
             overflow-x: hidden;
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
         /* Cinematic Background with portfolio-bg.png.png */
         .cinematic-bg {
-            background-image: linear-gradient(to bottom, rgba(1,1,3,0.85), rgba(1,1,3,0.97)), url('portfolio-bg.png.png');
+            background-image: linear-gradient(to bottom, rgba(3,7,18,0.88), rgba(3,7,18,0.98)), url('portfolio-bg.png.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -60,19 +60,22 @@
             pointer-events: none;
         }
         .glass-panel {
-            background: rgba(8, 8, 18, 0.82);
-            backdrop-filter: blur(18px);
-            border: 1px solid rgba(0, 255, 136, 0.2);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9);
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .glass-panel:hover {
-            border-color: rgba(0, 255, 136, 0.7);
-            box-shadow: 0 0 35px rgba(0, 255, 136, 0.3);
+            border-color: rgba(0, 240, 255, 0.7);
+            box-shadow: 0 0 35px rgba(0, 240, 255, 0.3);
             transform: translateY(-5px);
         }
-        .neon-glow {
-            text-shadow: 0 0 25px rgba(0, 255, 136, 0.8);
+        .cyan-glow {
+            text-shadow: 0 0 25px rgba(0, 240, 255, 0.8);
+        }
+        .pink-glow {
+            text-shadow: 0 0 25px rgba(255, 0, 85, 0.8);
         }
         /* Intro Splash Screen */
         #intro-screen {
@@ -81,7 +84,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: #010103;
+            background: #030712;
             z-index: 9999;
             display: flex;
             flex-direction: column;
@@ -93,18 +96,26 @@
             opacity: 0;
             visibility: hidden;
         }
+        /* Intro Image Animation */
+        @keyframes introFloat {
+            0%, 100% { transform: translateY(0px) scale(1); filter: drop-shadow(0 0 20px rgba(0,240,255,0.4)); }
+            50% { transform: translateY(-12px) scale(1.02); filter: drop-shadow(0 0 40px rgba(255,0,85,0.7)); }
+        }
+        .intro-animated-img {
+            animation: introFloat 4s ease-in-out infinite;
+        }
         /* Profile Image Hover & Pulse Effects */
         .animated-profile {
             transition: transform 0.5s ease;
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
         }
         .animated-profile:hover {
             transform: scale(1.03) rotate(1deg);
-            box-shadow: 0 0 50px rgba(189, 0, 255, 0.7);
+            box-shadow: 0 0 50px rgba(255, 0, 85, 0.7);
         }
         /* Timeline Bar Vibe */
         .timeline-bar {
-            background: linear-gradient(90deg, #00ff88, #bd00ff, #ff0055);
+            background: linear-gradient(90deg, #00f0ff, #8b5cf6, #ff0055);
             height: 3px;
         }
         /* Custom Scrollbar */
@@ -112,32 +123,35 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #010103;
+            background: #030712;
         }
         ::-webkit-scrollbar-thumb {
-            background: #00ff88;
+            background: #00f0ff;
             border-radius: 4px;
         }
     </style>
 </head>
-<body class="selection:bg-neonGreen selection:text-darkBg cinematic-bg">
+<body class="selection:bg-cyberCyan selection:text-darkBg cinematic-bg">
 
-    <!-- INTRO SPLASH SCREEN -->
+    <!-- INTRO SPLASH SCREEN WITH INTRO IMAGE & ANIMATIONS -->
     <div id="intro-screen">
         <div class="text-center px-6 max-w-2xl space-y-6" data-aos="zoom-in" data-aos-duration="1000">
-            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full glass-panel border border-neonGreen/40 animate-pulse font-mono text-xs">
-                <span class="w-2.5 h-2.5 rounded-full bg-neonGreen"></span>
-                <span>TIMELINE LOADED: 00:00:01:00</span>
+            <div class="relative w-40 h-40 sm:w-48 sm:h-48 mx-auto mb-4 rounded-full p-1.5 glass-panel border-2 border-cyberCyan/60 intro-animated-img overflow-hidden">
+                <img src="intro.png.png" alt="Harsh Baraiya Intro" class="w-full h-full object-cover rounded-full">
+            </div>
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full glass-panel border border-cyberCyan/40 font-mono text-xs animate-pulse">
+                <span class="w-2.5 h-2.5 rounded-full bg-cyberCyan"></span>
+                <span class="text-gray-300">SYSTEM INITIALIZED // 00:00:01:00</span>
             </div>
             <h1 class="font-orbitron font-black text-4xl sm:text-6xl tracking-wider uppercase text-white">
-                HARSH <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonGreen to-cyberViolet neon-glow">BARAIYA</span>
+                HARSH <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyberCyan to-cyberPink cyan-glow">BARAIYA</span>
             </h1>
             <p class="font-mono text-sm sm:text-base text-gray-400 tracking-widest uppercase">
-                [ EDITOR // DEVELOPER // ROBOTICS ASPIRANT ]
+                [ ELITE EDITOR &bull; DEVELOPER &bull; ROBOTICS ASPIRANT ]
             </p>
-            <div class="pt-6">
-                <button onclick="enterPortfolio()" class="px-8 py-4 rounded-xl bg-gradient-to-r from-neonGreen to-emerald-500 text-darkBg font-orbitron font-extrabold text-sm tracking-widest uppercase hover:scale-105 transition transform shadow-lg shadow-neonGreen/40 cursor-pointer">
-                    INITIALIZE SYSTEM <i class="fas fa-play ml-2"></i>
+            <div class="pt-4">
+                <button onclick="enterPortfolio()" class="px-8 py-4 rounded-xl bg-gradient-to-r from-cyberCyan to-blue-600 text-darkBg font-orbitron font-extrabold text-sm tracking-widest uppercase hover:scale-105 transition transform shadow-lg shadow-cyberCyan/40 cursor-pointer">
+                    ENTER DIGITAL UNIVERSE <i class="fas fa-play ml-2"></i>
                 </button>
             </div>
         </div>
@@ -149,17 +163,17 @@
     <!-- Navigation Bar -->
     <nav class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-white/5 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="#" class="font-orbitron font-black text-xl tracking-wider text-neonGreen neon-glow flex items-center gap-2">
-                <i class="fas fa-code text-cyberViolet"></i> HARSH<span class="text-white">.FX</span>
+            <a href="#" class="font-orbitron font-black text-xl tracking-wider text-cyberCyan cyan-glow flex items-center gap-2">
+                <i class="fas fa-code text-cyberPink"></i> HARSH<span class="text-white">.FX</span>
             </a>
             <div class="hidden md:flex items-center space-x-8 font-medium text-sm font-mono">
-                <a href="#about" class="hover:text-neonGreen transition">01. ABOUT</a>
-                <a href="#skills" class="hover:text-neonGreen transition">02. SKILLS</a>
-                <a href="#projects" class="hover:text-neonGreen transition">03. PROJECTS</a>
-                <a href="#editor-showcase" class="hover:text-neonGreen transition">04. REELS & EDITS</a>
-                <a href="#contact" class="hover:text-neonGreen transition">05. CONTACT</a>
+                <a href="#about" class="hover:text-cyberCyan transition">01. ABOUT</a>
+                <a href="#skills" class="hover:text-cyberCyan transition">02. SKILLS</a>
+                <a href="#projects" class="hover:text-cyberCyan transition">03. PROJECTS</a>
+                <a href="#editor-showcase" class="hover:text-cyberCyan transition">04. REELS & EDITS</a>
+                <a href="#contact" class="hover:text-cyberCyan transition">05. CONTACT</a>
             </div>
-            <a href="#contact" class="hidden md:inline-block px-5 py-2 rounded-lg bg-neonGreen text-darkBg font-orbitron font-bold text-xs tracking-wider uppercase transition transform hover:scale-105 shadow-lg shadow-neonGreen/30">
+            <a href="#contact" class="hidden md:inline-block px-5 py-2 rounded-lg bg-cyberCyan text-darkBg font-orbitron font-bold text-xs tracking-wider uppercase transition transform hover:scale-105 shadow-lg shadow-cyberCyan/30">
                 Let's Talk
             </a>
         </div>
@@ -171,18 +185,18 @@
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-center z-10">
             
             <!-- Left Bio -->
-            <div class="md:col-span-7 text-center md:text-left space-y-6" data-aos="fade-right" data-aos-duration="1000">
-                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full glass-panel border border-neonGreen/40 font-mono text-xs">
-                    <span class="w-2.5 h-2.5 rounded-full bg-neonGreen animate-ping"></span>
+            <div class="md:col-span-7 text-center md:text-left space-y-6" data-aos="fade-right" data-aos-duration="1000" data-aos-mirror="true">
+                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full glass-panel border border-cyberCyan/40 font-mono text-xs">
+                    <span class="w-2.5 h-2.5 rounded-full bg-cyberCyan animate-ping"></span>
                     <span class="text-gray-300">SRCEM • RGPV University • B.Tech CSE</span>
                 </div>
                 
                 <h1 class="font-orbitron font-black text-4xl sm:text-6xl md:text-7xl tracking-tight uppercase leading-none">
-                    Harsh <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonGreen to-cyberViolet neon-glow">Baraiya</span>
+                    Harsh <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyberCyan to-cyberPink cyan-glow">Baraiya</span>
                 </h1>
                 
                 <p class="font-mono text-sm sm:text-base md:text-lg text-gray-300 tracking-wide">
-                    &gt; Full-Stack Developer &bull; Pro Video Editor &bull; <span class="text-neonGreen font-bold">Robotics Engineer (Future)</span>
+                    &gt; Full-Stack Developer &bull; Pro Video Editor &bull; <span class="text-cyberCyan font-bold">Robotics Engineer (Future)</span>
                 </p>
                 
                 <p class="text-gray-400 text-sm md:text-base leading-relaxed max-w-xl font-sans">
@@ -190,21 +204,21 @@
                 </p>
 
                 <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-4">
-                    <a href="#projects" class="px-8 py-3.5 rounded-xl bg-neonGreen text-darkBg font-orbitron font-bold text-sm tracking-wider uppercase hover:bg-emerald-400 transition shadow-lg shadow-neonGreen/40">
+                    <a href="#projects" class="px-8 py-3.5 rounded-xl bg-cyberCyan text-darkBg font-orbitron font-bold text-sm tracking-wider uppercase hover:bg-cyan-400 transition shadow-lg shadow-cyberCyan/40">
                         Explore Works
                     </a>
                     <a href="https://www.instagram.com/harshfx.exe/" target="_blank" class="px-8 py-3.5 rounded-xl glass-panel font-orbitron font-bold text-sm tracking-wider uppercase hover:bg-white/5 transition flex items-center gap-2 border border-white/10">
-                        <i class="fab fa-instagram text-pink-500"></i> @harshfx.exe
+                        <i class="fab fa-instagram text-cyberPink"></i> @harshfx.exe
                     </a>
                 </div>
             </div>
 
             <!-- Right Profile Image with 3D Tilt & Glow -->
-            <div class="md:col-span-5 flex justify-center" data-aos="fade-left" data-aos-duration="1000">
-                <div class="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-3xl p-3 glass-panel animated-profile overflow-hidden border-2 border-neonGreen/50">
-                    <img src="profile.png.png" alt="Harsh Baraiya" class="w-full h-full object-cover rounded-2xl filter contrast-110 brightness-105">
-                    <div class="absolute bottom-5 left-5 bg-darkBg/90 px-3.5 py-1.5 rounded-lg text-xs font-mono text-neonGreen border border-neonGreen/40 backdrop-blur-md flex items-center gap-2">
-                        <i class="fas fa-video text-editorRed"></i> EDITOR &amp; CSE DEV
+            <div class="md:col-span-5 flex justify-center" data-aos="fade-left" data-aos-duration="1000" data-aos-mirror="true">
+                <div class="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-3xl p-3 glass-panel animated-profile overflow-hidden border-2 border-cyberCyan/50">
+                    <img src="profile.png.png" alt="Harsh Baraiya Profile" class="w-full h-full object-cover rounded-2xl filter contrast-110 brightness-105">
+                    <div class="absolute bottom-5 left-5 bg-darkBg/90 px-3.5 py-1.5 rounded-lg text-xs font-mono text-cyberCyan border border-cyberCyan/40 backdrop-blur-md flex items-center gap-2">
+                        <i class="fas fa-video text-cyberPink"></i> EDITOR &amp; CSE DEV
                     </div>
                 </div>
             </div>
@@ -214,12 +228,12 @@
 
     <!-- About Section -->
     <section id="about" class="py-24 px-6 relative">
-        <div class="max-w-5xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
-            <div class="glass-panel rounded-3xl p-8 md:p-12 relative overflow-hidden border border-neonGreen/30">
-                <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-neonGreen/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="max-w-5xl mx-auto" data-aos="fade-up" data-aos-duration="1000" data-aos-mirror="true">
+            <div class="glass-panel rounded-3xl p-8 md:p-12 relative overflow-hidden border border-cyberCyan/30">
+                <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-cyberCyan/10 rounded-full blur-3xl pointer-events-none"></div>
                 
                 <h2 class="font-orbitron text-3xl font-bold mb-6 flex items-center gap-3">
-                    <span class="text-neonGreen">01.</span> About Me
+                    <span class="text-cyberCyan">01.</span> About Me
                 </h2>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
@@ -228,100 +242,197 @@
                             Hello! I'm <strong class="text-white">Harsh Baraiya</strong>, currently pursuing my B.Tech in Computer Science & Engineering (CSE) at <strong class="text-white">SRCEM</strong> under <strong class="text-white">RGPV University</strong>, India.
                         </p>
                         <p>
-                            I have a dual passion: writing crisp code for software & web solutions, and crafting high-end cinematic edits as a professional video editor. My ultimate long-term career goal is to work as a <strong class="text-neonGreen">Robotics Engineer</strong>, merging artificial intelligence, electronics, and hardware automation.
+                            I have a dual passion: writing crisp code for software & web solutions, and crafting high-end cinematic edits as a professional video editor. My ultimate long-term career goal is to work as a <strong class="text-cyberCyan">Robotics Engineer</strong>, merging artificial intelligence, electronics, and hardware automation.
                         </p>
                         <p class="text-xs text-gray-400 font-mono">
                             // Status: Actively building projects, mastering Python/C++, and pushing creative boundaries on Instagram (@harshfx.exe).
                         </p>
                     </div>
                     
-                    <div class="glass-panel p-6 rounded-2xl border border-neonGreen/30 text-center space-y-3" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="w-12 h-12 mx-auto rounded-full bg-neonGreen/10 flex items-center justify-center text-neonGreen text-xl">
+                    <div class="glass-panel p-6 rounded-2xl border border-cyberCyan/30 text-center space-y-3" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="w-12 h-12 mx-auto rounded-full bg-cyberCyan/10 flex items-center justify-center text-cyberCyan text-xl">
                             <i class="fas fa-graduation-cap"></i>
                         </div>
                         <h3 class="font-orbitron font-bold text-base">Education</h3>
                         <p class="text-xs text-gray-400">B.Tech CSE Student</p>
-                        <div class="pt-2 border-t border-white/10 text-xs font-semibold text-neonGreen font-mono">SRCEM • RGPV Univ.</div>
+                        <div class="pt-2 border-t border-white/10 text-xs font-semibold text-cyberCyan font-mono">SRCEM • RGPV Univ.</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Skills Section with Circular Progress Animations -->
     <section id="skills" class="py-24 px-6 relative">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16" data-aos="fade-up">
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-mirror="true">
                 <h2 class="font-orbitron text-3xl md:text-4xl font-black uppercase tracking-wider mb-3">
-                    Technical & Creative <span class="text-neonGreen">Skills</span>
+                    Technical & Creative <span class="text-cyberCyan">Skills</span>
                 </h2>
                 <p class="text-gray-400 text-sm max-w-xl mx-auto font-mono">
                     // Programming languages, dev frameworks, and professional video editing tools.
                 </p>
             </div>
 
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4" data-aos="fade-up" data-aos-duration="1000">
-                <!-- Skill Card -->
-                <div class="glass-panel p-5 rounded-2xl text-center group">
-                    <div class="text-3xl mb-3 text-neonGreen group-hover:scale-110 transition"><i class="fab fa-cuttlefish"></i></div>
+            <!-- Circular Animated Skills Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6" data-aos="fade-up" data-aos-duration="1000" data-aos-mirror="true">
+                
+                <!-- Skill 1: C++ -->
+                <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
+                    <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
+                            <circle cx="40" cy="40" r="34" stroke="#00f0ff" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="30" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-cyberCyan">85%</div>
+                    </div>
                     <h3 class="font-orbitron font-semibold text-sm">C++</h3>
-                    <span class="text-[10px] text-gray-500 uppercase tracking-widest font-mono">Language</span>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">Language</span>
                 </div>
-                <div class="glass-panel p-5 rounded-2xl text-center group">
-                    <div class="text-3xl mb-3 text-emerald-400 group-hover:scale-110 transition"><i class="fab fa-python"></i></div>
-                    <h3 class="font-orbitron font-semibold text-sm">Python</h3>
-                    <span class="text-[10px] text-gray-500 uppercase tracking-widest font-mono">Core / AI</span>
+
+                <!-- Skill 2: Python -->
+                <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
+                    <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
+                            <circle cx="40" cy="40" r="34" stroke="#ff0055" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="40" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-cyberPink">90%</div>
+                    </div>
+                    <h3 class="font-orbitron font-semibold text-sm">Python / AI</h3>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">Core / AI</span>
                 </div>
-                <div class="glass-panel p-5 rounded-2xl text-center group">
-                    <div class="text-3xl mb-3 text-orange-500 group-hover:scale-110 transition"><i class="fab fa-html5"></i></div>
+
+                <!-- Skill 3: Web Dev -->
+                <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
+                    <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
+                            <circle cx="40" cy="40" r="34" stroke="#8b5cf6" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="50" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-accentViolet">80%</div>
+                    </div>
                     <h3 class="font-orbitron font-semibold text-sm">HTML / CSS</h3>
-                    <span class="text-[10px] text-gray-500 uppercase tracking-widest font-mono">Web Dev</span>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">Web Dev</span>
                 </div>
-                <div class="glass-panel p-5 rounded-2xl text-center group">
-                    <div class="text-3xl mb-3 text-purple-400 group-hover:scale-110 transition"><i class="fas fa-database"></i></div>
+
+                <!-- Skill 4: MySQL -->
+                <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
+                    <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
+                            <circle cx="40" cy="40" r="34" stroke="#00f0ff" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="60" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-cyberCyan">75%</div>
+                    </div>
                     <h3 class="font-orbitron font-semibold text-sm">MySQL</h3>
-                    <span class="text-[10px] text-gray-500 uppercase tracking-widest font-mono">Database</span>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">Database</span>
                 </div>
-                <div class="glass-panel p-5 rounded-2xl text-center group">
-                    <div class="text-3xl mb-3 text-red-400 group-hover:scale-110 transition"><i class="fab fa-git-alt"></i></div>
-                    <h3 class="font-orbitron font-semibold text-sm">Git & GitHub</h3>
-                    <span class="text-[10px] text-gray-500 uppercase tracking-widest font-mono">VCS</span>
+
+                <!-- Skill 5: Git & GitHub -->
+                <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
+                    <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
+                            <circle cx="40" cy="40" r="34" stroke="#ff0055" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="45" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-cyberPink">85%</div>
+                    </div>
+                    <h3 class="font-orbitron font-semibold text-sm">Git &amp; GitHub</h3>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">VCS</span>
                 </div>
-                <div class="glass-panel p-5 rounded-2xl text-center group">
-                    <div class="text-3xl mb-3 text-blue-400 group-hover:scale-110 transition"><i class="fas fa-code"></i></div>
-                    <h3 class="font-orbitron font-semibold text-sm">VS Code</h3>
-                    <span class="text-[10px] text-gray-500 uppercase tracking-widest font-mono">IDE</span>
-                </div>
-                <div class="glass-panel p-5 rounded-2xl text-center group">
-                    <div class="text-3xl mb-3 text-editorRed group-hover:scale-110 transition"><i class="fas fa-video"></i></div>
+
+                <!-- Skill 6: Video Editing -->
+                <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
+                    <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
+                            <circle cx="40" cy="40" r="34" stroke="#8b5cf6" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="25" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-accentViolet">95%</div>
+                    </div>
                     <h3 class="font-orbitron font-semibold text-sm">Video Editing</h3>
-                    <span class="text-[10px] text-gray-500 uppercase tracking-widest font-mono">Creative</span>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">Creative</span>
                 </div>
-                <div class="glass-panel p-5 rounded-2xl text-center group">
-                    <div class="text-3xl mb-3 text-amber-500 group-hover:scale-110 transition"><i class="fas fa-film"></i></div>
-                    <h3 class="font-orbitron font-semibold text-sm">Reels & Edits</h3>
-                    <span class="text-[10px] text-gray-500 uppercase tracking-widest font-mono">Content</span>
+
+                <!-- Skill 7: Reels & Content -->
+                <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
+                    <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
+                            <circle cx="40" cy="40" r="34" stroke="#00f0ff" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="30" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-cyberCyan">92%</div>
+                    </div>
+                    <h3 class="font-orbitron font-semibold text-sm">Reels &amp; Edits</h3>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">Content</span>
                 </div>
-                <div class="glass-panel p-5 rounded-2xl text-center group">
-                    <div class="text-3xl mb-3 text-cyan-400 group-hover:scale-110 transition"><i class="fas fa-robot"></i></div>
+
+                <!-- Skill 8: Robotics -->
+                <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
+                    <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
+                            <circle cx="40" cy="40" r="34" stroke="#ff0055" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="70" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-cyberPink">70%</div>
+                    </div>
                     <h3 class="font-orbitron font-semibold text-sm">Robotics</h3>
-                    <span class="text-[10px] text-gray-500 uppercase tracking-widest font-mono">Hardware</span>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">Hardware</span>
                 </div>
-                <div class="glass-panel p-5 rounded-2xl text-center group">
-                    <div class="text-3xl mb-3 text-indigo-400 group-hover:scale-110 transition"><i class="fas fa-cogs"></i></div>
+
+                <!-- Skill 9: Automation -->
+                <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
+                    <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
+                            <circle cx="40" cy="40" r="34" stroke="#8b5cf6" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="50" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-accentViolet">82%</div>
+                    </div>
                     <h3 class="font-orbitron font-semibold text-sm">Automation</h3>
-                    <span class="text-[10px] text-gray-500 uppercase tracking-widest font-mono">Systems</span>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">Systems</span>
                 </div>
-                <div class="glass-panel p-5 rounded-2xl text-center group">
-                    <div class="text-3xl mb-3 text-violet-400 group-hover:scale-110 transition"><i class="fas fa-brain"></i></div>
+
+                <!-- Skill 10: AI Tools -->
+                <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
+                    <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
+                            <circle cx="40" cy="40" r="34" stroke="#00f0ff" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="35" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-cyberCyan">88%</div>
+                    </div>
                     <h3 class="font-orbitron font-semibold text-sm">AI Tools</h3>
-                    <span class="text-[10px] text-gray-500 uppercase tracking-widest font-mono">Innovation</span>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">Innovation</span>
                 </div>
-                <div class="glass-panel p-5 rounded-2xl text-center group">
-                    <div class="text-3xl mb-3 text-pink-400 group-hover:scale-110 transition"><i class="fas fa-bullhorn"></i></div>
+
+                <!-- Skill 11: VS Code -->
+                <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
+                    <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
+                            <circle cx="40" cy="40" r="34" stroke="#ff0055" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="30" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-cyberPink">90%</div>
+                    </div>
+                    <h3 class="font-orbitron font-semibold text-sm">VS Code</h3>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">IDE</span>
+                </div>
+
+                <!-- Skill 12: Content Creation -->
+                <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
+                    <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
+                            <circle cx="40" cy="40" r="34" stroke="#8b5cf6" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="40" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-accentViolet">88%</div>
+                    </div>
                     <h3 class="font-orbitron font-semibold text-sm">Creation</h3>
-                    <span class="text-[10px] text-gray-500 uppercase tracking-widest font-mono">Media</span>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">Media</span>
                 </div>
+
             </div>
         </div>
     </section>
@@ -329,22 +440,22 @@
     <!-- Projects Section -->
     <section id="projects" class="py-24 px-6 relative">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16" data-aos="fade-up">
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-mirror="true">
                 <h2 class="font-orbitron text-3xl md:text-4xl font-black uppercase tracking-wider mb-3">
-                    Featured <span class="text-neonGreen">Projects</span>
+                    Featured <span class="text-cyberCyan">Projects</span>
                 </h2>
                 <p class="text-gray-400 text-sm max-w-xl mx-auto font-mono">
                     // Software engineering, AI assistant systems, and robotics frameworks.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="fade-up" data-aos-duration="1000">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="fade-up" data-aos-duration="1000" data-aos-mirror="true">
                 <!-- Project 1 -->
-                <div class="glass-panel rounded-3xl p-6 flex flex-col justify-between border border-neonGreen/30">
+                <div class="glass-panel rounded-3xl p-6 flex flex-col justify-between border border-cyberCyan/30">
                     <div>
                         <div class="flex justify-between items-start mb-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-neonGreen/20 text-neonGreen border border-neonGreen/30">AI System</span>
-                            <i class="fas fa-robot text-xl text-neonGreen"></i>
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-cyberCyan/20 text-cyberCyan border border-cyberCyan/30">AI System</span>
+                            <i class="fas fa-robot text-xl text-cyberCyan"></i>
                         </div>
                         <h3 class="font-orbitron font-bold text-xl mb-2">Ziva AI Assistant</h3>
                         <p class="text-gray-400 text-sm leading-relaxed mb-6 font-sans">
@@ -353,7 +464,7 @@
                     </div>
                     <div class="flex items-center justify-between pt-4 border-t border-white/10 text-xs font-mono text-gray-300">
                         <span>Python</span>
-                        <span class="text-neonGreen font-bold">ACTIVE</span>
+                        <span class="text-cyberCyan font-bold">ACTIVE</span>
                     </div>
                 </div>
 
@@ -361,17 +472,17 @@
                 <div class="glass-panel rounded-3xl p-6 flex flex-col justify-between border border-white/10">
                     <div>
                         <div class="flex justify-between items-start mb-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-cyberViolet/20 text-violet-400 border border-cyberViolet/30">Web Tech</span>
-                            <i class="fas fa-globe text-xl text-violet-400"></i>
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-accentViolet/20 text-accentViolet border border-accentViolet/30">Web Tech</span>
+                            <i class="fas fa-globe text-xl text-accentViolet"></i>
                         </div>
                         <h3 class="font-orbitron font-bold text-xl mb-2">Personal Portfolio</h3>
                         <p class="text-gray-400 text-sm leading-relaxed mb-6 font-sans">
-                            A hyper-immersive 3D responsive cinematic portfolio featuring glassmorphism and neon cyberpunk aesthetics.
+                            A hyper-immersive 3D responsive cinematic portfolio featuring glassmorphism and neon cyber aesthetics.
                         </p>
                     </div>
                     <div class="flex items-center justify-between pt-4 border-t border-white/10 text-xs font-mono text-gray-300">
                         <span>Three.js / Tailwind</span>
-                        <span class="text-violet-400 font-bold">DEPLOYED</span>
+                        <span class="text-accentViolet font-bold">DEPLOYED</span>
                     </div>
                 </div>
 
@@ -416,51 +527,51 @@
 
     <!-- Editor Showcase / Video Reels Section -->
     <section id="editor-showcase" class="py-24 px-6 relative">
-        <div class="max-w-6xl mx-auto" data-aos="fade-up">
-            <div class="glass-panel rounded-3xl p-8 md:p-12 border border-editorRed/40 relative overflow-hidden">
-                <div class="absolute -left-20 -top-20 w-64 h-64 bg-editorRed/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="max-w-6xl mx-auto" data-aos="fade-up" data-aos-mirror="true">
+            <div class="glass-panel rounded-3xl p-8 md:p-12 border border-cyberPink/40 relative overflow-hidden">
+                <div class="absolute -left-20 -top-20 w-64 h-64 bg-cyberPink/10 rounded-full blur-3xl pointer-events-none"></div>
 
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
                     <div>
-                        <span class="px-3 py-1 rounded-full text-xs font-mono bg-editorRed/20 text-editorRed border border-editorRed/30 uppercase">Video Editor Portfolio</span>
+                        <span class="px-3 py-1 rounded-full text-xs font-mono bg-cyberPink/20 text-cyberPink border border-cyberPink/30 uppercase">Video Editor Portfolio</span>
                         <h2 class="font-orbitron text-3xl md:text-4xl font-bold mt-2">
-                            Cinematic Reels &amp; <span class="text-editorRed">Edits</span>
+                            Cinematic Reels &amp; <span class="text-cyberPink">Edits</span>
                         </h2>
                     </div>
-                    <a href="https://www.instagram.com/harshfx.exe/" target="_blank" class="px-6 py-3 rounded-xl bg-editorRed text-white font-orbitron font-bold text-xs uppercase hover:bg-red-700 transition shadow-lg shadow-editorRed/40 flex items-center gap-2">
+                    <a href="https://www.instagram.com/harshfx.exe/" target="_blank" class="px-6 py-3 rounded-xl bg-cyberPink text-white font-orbitron font-bold text-xs uppercase hover:bg-pink-700 transition shadow-lg shadow-cyberPink/40 flex items-center gap-2">
                         <i class="fab fa-instagram"></i> View Instagram ID (@harshfx.exe)
                     </a>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <!-- Reel Card 1 -->
-                    <div class="glass-panel p-6 rounded-2xl border border-white/10 text-center space-y-4 hover:border-editorRed transition">
-                        <div class="w-12 h-12 mx-auto rounded-full bg-editorRed/10 flex items-center justify-center text-editorRed text-xl">
+                    <div class="glass-panel p-6 rounded-2xl border border-white/10 text-center space-y-4 hover:border-cyberPink transition">
+                        <div class="w-12 h-12 mx-auto rounded-full bg-cyberPink/10 flex items-center justify-center text-cyberPink text-xl">
                             <i class="fas fa-play"></i>
                         </div>
                         <h3 class="font-orbitron font-bold text-lg">High-Pace Montage</h3>
                         <p class="text-xs text-gray-400 font-sans">Dynamic beat sync, color grading, and seamless transitions tailored for social media impact.</p>
-                        <div class="text-[10px] font-mono text-editorRed uppercase">@harshfx.exe production</div>
+                        <div class="text-[10px] font-mono text-cyberPink uppercase">@harshfx.exe production</div>
                     </div>
 
                     <!-- Reel Card 2 -->
-                    <div class="glass-panel p-6 rounded-2xl border border-white/10 text-center space-y-4 hover:border-editorRed transition">
-                        <div class="w-12 h-12 mx-auto rounded-full bg-editorRed/10 flex items-center justify-center text-editorRed text-xl">
+                    <div class="glass-panel p-6 rounded-2xl border border-white/10 text-center space-y-4 hover:border-cyberPink transition">
+                        <div class="w-12 h-12 mx-auto rounded-full bg-cyberPink/10 flex items-center justify-center text-cyberPink text-xl">
                             <i class="fas fa-film"></i>
                         </div>
                         <h3 class="font-orbitron font-bold text-lg">Cyberpunk / Sci-Fi Edits</h3>
                         <p class="text-xs text-gray-400 font-sans">Immersive visual effects, futuristic sound design, and cinematic color palettes.</p>
-                        <div class="text-[10px] font-mono text-editorRed uppercase">Visual Effects &amp; Color</div>
+                        <div class="text-[10px] font-mono text-cyberPink uppercase">Visual Effects &amp; Color</div>
                     </div>
 
                     <!-- Reel Card 3 -->
-                    <div class="glass-panel p-6 rounded-2xl border border-white/10 text-center space-y-4 hover:border-editorRed transition">
-                        <div class="w-12 h-12 mx-auto rounded-full bg-editorRed/10 flex items-center justify-center text-editorRed text-xl">
+                    <div class="glass-panel p-6 rounded-2xl border border-white/10 text-center space-y-4 hover:border-cyberPink transition">
+                        <div class="w-12 h-12 mx-auto rounded-full bg-cyberPink/10 flex items-center justify-center text-cyberPink text-xl">
                             <i class="fas fa-bolt"></i>
                         </div>
                         <h3 class="font-orbitron font-bold text-lg">AI &amp; Tech Showcases</h3>
                         <p class="text-xs text-gray-400 font-sans">Blending technical coding project walkthroughs with aesthetic short-form edits.</p>
-                        <div class="text-[10px] font-mono text-editorRed uppercase">Content Creation</div>
+                        <div class="text-[10px] font-mono text-cyberPink uppercase">Content Creation</div>
                     </div>
                 </div>
             </div>
@@ -469,12 +580,12 @@
 
     <!-- Contact Section -->
     <section id="contact" class="py-24 px-6 relative">
-        <div class="max-w-4xl mx-auto" data-aos="zoom-in" data-aos-duration="1000">
-            <div class="glass-panel rounded-3xl p-8 md:p-12 border border-neonGreen/40 relative overflow-hidden text-center">
-                <div class="absolute -left-20 -top-20 w-64 h-64 bg-neonGreen/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="max-w-4xl mx-auto" data-aos="zoom-in" data-aos-duration="1000" data-aos-mirror="true">
+            <div class="glass-panel rounded-3xl p-8 md:p-12 border border-cyberCyan/40 relative overflow-hidden text-center">
+                <div class="absolute -left-20 -top-20 w-64 h-64 bg-cyberCyan/10 rounded-full blur-3xl pointer-events-none"></div>
 
                 <h2 class="font-orbitron text-3xl md:text-4xl font-bold uppercase tracking-wider mb-4">
-                    Let's Build <span class="text-neonGreen">Together</span>
+                    Let's Build <span class="text-cyberCyan">Together</span>
                 </h2>
                 <p class="text-gray-400 text-sm max-w-lg mx-auto mb-10 font-sans">
                     Whether you want to collaborate on code, discuss robotics engineering, or connect for video editing projects, my inbox is open!
@@ -482,8 +593,8 @@
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-10">
                     <!-- Email -->
-                    <a href="mailto:Harshbaraiya439@gmail.com" class="glass-panel px-6 py-4 rounded-2xl flex items-center gap-4 hover:border-neonGreen transition group text-left">
-                        <div class="w-10 h-10 rounded-xl bg-neonGreen/10 flex items-center justify-center text-neonGreen group-hover:scale-110 transition flex-shrink-0">
+                    <a href="mailto:Harshbaraiya439@gmail.com" class="glass-panel px-6 py-4 rounded-2xl flex items-center gap-4 hover:border-cyberCyan transition group text-left">
+                        <div class="w-10 h-10 rounded-xl bg-cyberCyan/10 flex items-center justify-center text-cyberCyan group-hover:scale-110 transition flex-shrink-0">
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div class="overflow-hidden">
@@ -493,7 +604,7 @@
                     </a>
 
                     <!-- GitHub -->
-                    <a href="https://github.com/harshbaraiya439-cyber" target="_blank" class="glass-panel px-6 py-4 rounded-2xl flex items-center gap-4 hover:border-neonGreen transition group text-left">
+                    <a href="https://github.com/harshbaraiya439-cyber" target="_blank" class="glass-panel px-6 py-4 rounded-2xl flex items-center gap-4 hover:border-cyberCyan transition group text-left">
                         <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition flex-shrink-0">
                             <i class="fab fa-github"></i>
                         </div>
@@ -504,7 +615,7 @@
                     </a>
 
                     <!-- LinkedIn -->
-                    <a href="https://www.linkedin.com/in/harsh-baraiya-a105b33b8/" target="_blank" class="glass-panel px-6 py-4 rounded-2xl flex items-center gap-4 hover:border-neonGreen transition group text-left">
+                    <a href="https://www.linkedin.com/in/harsh-baraiya-a105b33b8/" target="_blank" class="glass-panel px-6 py-4 rounded-2xl flex items-center gap-4 hover:border-cyberCyan transition group text-left">
                         <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 group-hover:scale-110 transition flex-shrink-0">
                             <i class="fab fa-linkedin-in"></i>
                         </div>
@@ -515,7 +626,7 @@
                     </a>
 
                     <!-- Instagram Editing ID -->
-                    <a href="https://www.instagram.com/harshfx.exe/" target="_blank" class="glass-panel px-6 py-4 rounded-2xl flex items-center gap-4 hover:border-neonGreen transition group text-left">
+                    <a href="https://www.instagram.com/harshfx.exe/" target="_blank" class="glass-panel px-6 py-4 rounded-2xl flex items-center gap-4 hover:border-cyberCyan transition group text-left">
                         <div class="w-10 h-10 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-500 group-hover:scale-110 transition flex-shrink-0">
                             <i class="fab fa-instagram"></i>
                         </div>
@@ -533,11 +644,12 @@
         </div>
     </section>
 
-    <!-- JavaScript for AOS, Intro Screen & Three.js -->
+    <!-- JavaScript for AOS (mirror enabled), Intro Screen & Three.js -->
     <script>
-        // Initialize AOS Scroll Animations
+        // Initialize AOS with mirror: true so animations trigger repeatedly on scroll up & down
         AOS.init({
-            once: true,
+            once: false,
+            mirror: true,
             offset: 100,
             duration: 800,
         });
@@ -570,7 +682,7 @@
 
         const particlesMaterial = new THREE.PointsMaterial({
             size: 0.03,
-            color: '#00ff88',
+            color: '#00f0ff',
             transparent: true,
             opacity: 0.85,
             blending: THREE.AdditiveBlending
