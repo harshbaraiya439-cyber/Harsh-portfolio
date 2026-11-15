@@ -1,1507 +1,498 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#050505">
-
-  <title>Harsh Baraiya | Developer Portfolio</title>
-  <meta name="description" content="Harsh Baraiya — BTech CSE student, aspiring robotics engineer and developer.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #050505;
-      --panel: #101010;
-      --text: #f4f4f4;
-      --muted: #858585;
-      --accent: #ff3b5c;
-      --line: rgba(255,255,255,.12);
-      --font: "Space Grotesk", sans-serif;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 90px;
-    }
-
-    body {
-      background: linear-gradient(rgba(5, 5, 5, .78), rgba(5, 5, 5, .82)), url("portfolio-bg.png.png") center center / cover fixed;
-      color: var(--text);
-      font-family: var(--font);
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 10;
-      opacity: .035;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-    }
-
-    .container {
-      width: min(1180px, 90%);
-      margin: auto;
-    }
-
-    /* NAVIGATION */
-
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 100;
-      background: rgba(5,5,5,.78);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav-inner {
-      height: 76px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: -1px;
-    }
-
-    .logo span {
-      color: var(--accent);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: #bcbcbc;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: color .3s;
-    }
-
-    .nav-links a:hover {
-      color: white;
-    }
-
-    .menu-btn {
-      display: none;
-      background: transparent;
-      color: white;
-      border: 1px solid var(--line);
-      padding: 8px 12px;
-      cursor: pointer;
-    }
-
-    /* HERO */
-
-    .hero {
-      min-height: 100vh;
-      padding-top: 110px;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(
-          ellipse at 75% 45%,
-          rgba(255, 59, 92, .18),
-          transparent 40%
-        ),
-        radial-gradient(
-          ellipse at 25% 60%,
-          rgba(50, 80, 180, .12),
-          transparent 45%
-        );
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      align-items: center;
-      gap: 40px;
-      width: 100%;
-    }
-
-    .hero-copy {
-      position: relative;
-      z-index: 2;
-      padding-left: 35px;
-      animation: slideUp 1s ease both;
-    }
-
-    .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 11px;
-      color: #aaa;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 24px;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #64ff91;
-      box-shadow: 0 0 12px #64ff91;
-    }
-
-    .hero h1 {
-      font-family: "Inter", sans-serif;
-      font-weight: 900;
-      font-size: clamp(54px, 8vw, 108px);
-      line-height: .88;
-      letter-spacing: -7px;
-      text-transform: uppercase;
-    }
-
-    .hero h1 .last-name {
-      display: block;
-      color: transparent;
-      -webkit-text-stroke: 1.5px #f3f3f3;
-    }
-
-    .hero h1 .dot {
-      color: var(--accent);
-      -webkit-text-stroke: 0;
-    }
-
-    .hero-subtitle {
-      margin-top: 30px;
-      font-size: clamp(18px, 2vw, 24px);
-      line-height: 1.4;
-      font-weight: 600;
-      max-width: 480px;
-    }
-
-    .hero-subtitle span {
-      color: var(--accent);
-    }
-
-    .hero-description {
-      margin-top: 16px;
-      max-width: 470px;
-      color: #929292;
-      font-size: 14px;
-      line-height: 1.9;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 20px;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: .3s;
-      border: 1px solid var(--line);
-    }
-
-    .btn-primary {
-      background: white;
-      color: black;
-    }
-
-    .btn-primary:hover {
-      background: var(--accent);
-      color: white;
-      transform: translateY(-3px);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: white;
-    }
-
-    .btn-outline:hover {
-      border-color: white;
-      transform: translateY(-3px);
-    }
-
-    /* 3D PHOTO STAGE */
-
-    .hero-visual {
-      min-height: 570px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      perspective: 1400px;
-      position: relative;
-      animation: fadeIn 1.5s ease both;
-    }
-
-    .visual-glow {
-      position: absolute;
-      width: 360px;
-      height: 450px;
-      background: radial-gradient(ellipse, rgba(255,59,92,.17), transparent 70%);
-      filter: blur(20px);
-    }
-
-    .portrait-frame {
-      width: min(100%, 500px);
-      height: 620px;
-      position: relative;
-      transform: rotateY(-6deg) rotateX(2deg);
-      transform-style: preserve-3d;
-      transition: transform .5s ease;
-      overflow: hidden;
-    }
-
-    .portrait-frame::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border: 1px solid rgba(255,255,255,.12);
-      transform: translateZ(-20px);
-      background: linear-gradient(145deg, #161616, #050505);
-    }
-
-    .portrait-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 20%;
-      position: relative;
-      z-index: 1;
-      filter: drop-shadow(0 15px 45px rgba(0,0,0,.8));
-    }
-
-    .portrait-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      pointer-events: none;
-      background: linear-gradient(
-        180deg,
-        transparent 55%,
-        rgba(5,5,5,.12) 72%,
-        #050505 100%
-      );
-    }
-
-    .portrait-label {
-      position: absolute;
-      z-index: 3;
-      bottom: 25px;
-      left: 25px;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #aaa;
-    }
-
-    .portrait-label strong {
-      display: block;
-      font-size: 18px;
-      color: white;
-      margin-top: 8px;
-    }
-
-    .floating-tag {
-      position: absolute;
-      z-index: 5;
-      top: 50px;
-      right: -10px;
-      padding: 12px 16px;
-      background: #121212;
-      border: 1px solid var(--line);
-      font-size: 11px;
-      color: #ddd;
-      letter-spacing: 1px;
-      animation: float 4s ease-in-out infinite;
-    }
-
-    .floating-tag span {
-      color: var(--accent);
-    }
-
-    .scroll-indicator {
-      position: absolute;
-      bottom: 25px;
-      left: 5%;
-      color: #666;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .scroll-indicator::before {
-      content: "";
-      width: 35px;
-      height: 1px;
-      background: var(--accent);
-    }
-
-    /* SECTION COMMON */
-
-    section:not(.hero) {
-      padding: 110px 0;
-      border-top: 1px solid var(--line);
-    }
-
-    .section-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 25px;
-      margin-bottom: 55px;
-    }
-
-    .section-number {
-      color: var(--accent);
-      font-size: 11px;
-      letter-spacing: 2px;
-      margin-bottom: 15px;
-    }
-
-    .section-title {
-      font-family: "Inter", sans-serif;
-      font-size: clamp(40px, 6vw, 72px);
-      font-weight: 900;
-      letter-spacing: -4px;
-      text-transform: uppercase;
-      line-height: .95;
-    }
-
-    .section-title span {
-      color: transparent;
-      -webkit-text-stroke: 1px #eee;
-    }
-
-    .section-note {
-      max-width: 340px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    /* ABOUT */
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 60px;
-    }
-
-    .about-photo {
-      width: 300px;
-      height: 380px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.15);
-      background: #111;
-    }
-
-    .about-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 15%;
-      transform: scale(1.15);
-    }
-
-    .about-card .big-mark {
-      font-size: 80px;
-      font-weight: 900;
-      letter-spacing: -8px;
-      color: var(--accent);
-    }
-
-    .about-card .card-bottom {
-      font-size: 12px;
-      color: #aaa;
-      line-height: 2;
-    }
-
-    .about-text h3 {
-      font-size: 28px;
-      margin-bottom: 22px;
-      letter-spacing: -1px;
-    }
-
-    .about-text p {
-      color: #999;
-      line-height: 1.9;
-      font-size: 14px;
-      margin-bottom: 18px;
-    }
-
-    .about-text strong {
-      color: white;
-    }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin-top: 35px;
-    }
-
-    .stat {
-      border-top: 1px solid var(--line);
-      padding-top: 18px;
-    }
-
-    .stat h4 {
-      font-size: 28px;
-      color: white;
-    }
-
-    .stat p {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin: 5px 0 0;
-    }
-
-    /* SKILLS */
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-    }
-
-    .skill-card {
-      padding: 28px;
-      border: 1px solid var(--line);
-      background: #0a0a0a;
-      transition: .35s;
-    }
-
-    .skill-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-5px);
-      background: #111;
-    }
-
-    .skill-card .skill-index {
-      color: var(--accent);
-      font-size: 11px;
-      margin-bottom: 35px;
-    }
-
-    .skill-card h3 {
-      font-size: 21px;
-      margin-bottom: 12px;
-    }
-
-    .skill-card p {
-      color: #888;
-      font-size: 12px;
-      line-height: 1.8;
-    }
-
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 20px;
-    }
-
-    .skill-tags span {
-      padding: 6px 9px;
-      font-size: 10px;
-      border: 1px solid var(--line);
-      color: #bbb;
-    }
-
-    /* PROJECTS */
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .project-card {
-      border: 1px solid var(--line);
-      background: #0a0a0a;
-      overflow: hidden;
-      transition: .35s;
-    }
-
-    .project-card:hover {
-      border-color: rgba(255,59,92,.65);
-      transform: translateY(-5px);
-    }
-
-    .project-visual {
-      min-height: 220px;
-      padding: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background:
-        radial-gradient(circle at 70% 30%, rgba(255,59,92,.14), transparent 40%),
-        linear-gradient(135deg, #151515, #080808);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .project-symbol {
-      font-family: "Inter", sans-serif;
-      font-size: 75px;
-      font-weight: 900;
-      color: transparent;
-      -webkit-text-stroke: 1px #777;
-      letter-spacing: -8px;
-    }
-
-    .project-content {
-      padding: 25px;
-    }
-
-    .project-content .project-type {
-      color: var(--accent);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
-    }
-
-    .project-content h3 {
-      font-size: 24px;
-      margin-bottom: 12px;
-    }
-
-    .project-content p {
-      color: #888;
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    .project-link {
-      display: inline-block;
-      margin-top: 22px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      border-bottom: 1px solid var(--accent);
-      padding-bottom: 5px;
-    }
-
-    /* LEARNING */
-
-    .learning-panel {
-      border: 1px solid var(--line);
-      padding: 40px;
-      background: linear-gradient(120deg, #111, #080808);
-    }
-
-    .learning-panel h3 {
-      font-size: clamp(26px, 4vw, 42px);
-      letter-spacing: -2px;
-      margin-bottom: 20px;
-    }
-
-    .learning-panel h3 span {
-      color: var(--accent);
-    }
-
-    .learning-panel p {
-      max-width: 650px;
-      color: #999;
-      line-height: 1.9;
-      font-size: 14px;
-    }
-
-    .learning-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 25px;
-    }
-
-    .learning-list span {
-      padding: 10px 14px;
-      border: 1px solid var(--line);
-      font-size: 11px;
-      color: #ccc;
-    }
-
-    /* CONTACT */
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr .8fr;
-      gap: 50px;
-    }
-
-    .contact-heading {
-      font-family: "Inter", sans-serif;
-      font-size: clamp(48px, 8vw, 100px);
-      font-weight: 900;
-      letter-spacing: -7px;
-      line-height: .9;
-      text-transform: uppercase;
-    }
-
-    .contact-heading span {
-      color: var(--accent);
-    }
-
-    .contact-intro {
-      color: #888;
-      max-width: 420px;
-      line-height: 1.8;
-      font-size: 14px;
-      margin-top: 25px;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .contact-link {
-      border: 1px solid var(--line);
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 13px;
-      transition: .3s;
-    }
-
-    .contact-link:hover {
-      background: #121212;
-      border-color: var(--accent);
-    }
-
-    .contact-link small {
-      color: #777;
-      display: block;
-      margin-bottom: 5px;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .contact-link .arrow {
-      color: var(--accent);
-      font-size: 20px;
-    }
-
-    /* FOOTER */
-
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 25px 0;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      color: #777;
-      font-size: 11px;
-    }
-
-    .footer-inner strong {
-      color: white;
-    }
-
-    /* REVEAL ANIMATIONS */
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(35px);
-      transition: opacity .8s ease, transform .8s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(35px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 900px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-
-      .hero {
-        padding-top: 130px;
-        padding-bottom: 70px;
-      }
-
-      .hero-copy {
-        text-align: center;
-      }
-
-      .eyebrow,
-      .hero-buttons {
-        justify-content: center;
-      }
-
-      .hero-description,
-      .hero-subtitle {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero h1 {
-        letter-spacing: -4px;
-      }
-
-      .hero-visual {
-        min-height: 470px;
-      }
-
-      .portrait-frame {
-        height: 450px;
-        max-width: 380px;
-      }
-
-      .floating-tag {
-        right: 3%;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        width: 90%;
-      }
-
-      .nav-inner {
-        height: 65px;
-      }
-
-      .menu-btn {
-        display: block;
-      }
-
-      .nav-links {
-        position: absolute;
-        top: 65px;
-        left: 0;
-        width: 100%;
-        display: none;
-        flex-direction: column;
-        gap: 0;
-        background: #080808;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .nav-links a {
-        width: 100%;
-        padding: 17px 5%;
-        border-top: 1px solid rgba(255,255,255,.06);
-      }
-
-      .hero {
-        min-height: auto;
-        padding-top: 120px;
-      }
-
-      .hero h1 {
-        font-size: clamp(48px, 14vw, 72px);
-        letter-spacing: -4px;
-      }
-
-      .hero-subtitle {
-        font-size: 18px;
-      }
-
-      .hero-description {
-        font-size: 13px;
-      }
-
-      .hero-visual {
-        min-height: 390px;
-      }
-
-      .portrait-frame {
-        height: 450px;
-        width: 90%;
-        transform: rotateY(-5deg);
-      }
-
-      .floating-tag {
-        top: 25px;
-        right: 0;
-        font-size: 9px;
-      }
-
-      .scroll-indicator {
-        display: none;
-      }
-
-      section:not(.hero) {
-        padding: 75px 0;
-      }
-
-      .section-top {
-        flex-direction: column;
-        align-items: flex-start;
-        margin-bottom: 35px;
-      }
-
-      .section-title {
-        letter-spacing: -2px;
-      }
-
-      .section-note {
-        font-size: 12px;
-      }
-
-      .skills-grid,
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .skill-card {
-        padding: 23px;
-      }
-
-      .skill-card .skill-index {
-        margin-bottom: 20px;
-      }
-
-      .about-card {
-        min-height: 260px;
-        padding: 25px;
-      }
-
-      .about-card .big-mark {
-        font-size: 65px;
-      }
-
-      .about-text h3 {
-        font-size: 24px;
-      }
-
-      .about-stats {
-        gap: 10px;
-      }
-
-      .stat h4 {
-        font-size: 23px;
-      }
-
-      .learning-panel {
-        padding: 25px;
-      }
-
-      .contact-heading {
-        letter-spacing: -4px;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-        text-align: center;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsh Baraiya | Developer & Video Editor</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Three.js for 3D Background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyberRed: '#ff0055',
+                        cyberDark: '#050508',
+                        cyberCard: '#0f0f17',
+                        cyberBlue: '#00f0ff'
+                    },
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050508;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        /* Custom Background Image with overlay */
+        .custom-bg {
+            background-image: linear-gradient(to bottom, rgba(5,5,8,0.85), rgba(5,5,8,0.95)), url('portfolio-bg.png.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .glass-card {
+            background: rgba(15, 15, 23, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 0, 85, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .glass-card:hover {
+            border-color: rgba(255, 0, 85, 0.6);
+            box-shadow: 0 0 25px rgba(255, 0, 85, 0.2);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(255, 0, 85, 0.6);
+        }
+        .blue-glow {
+            text-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+        }
+        /* Profile Image Animation */
+        @keyframes floatAnim {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+        }
+        @keyframes pulseBorder {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 85, 0.4), inset 0 0 15px rgba(0, 240, 255, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(255, 0, 85, 0.8), inset 0 0 25px rgba(0, 240, 255, 0.5); }
+        }
+        .animated-profile {
+            animation: floatAnim 4s ease-in-out infinite, pulseBorder 3s ease-in-out infinite;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050508;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff0055;
+            border-radius: 4px;
+        }
+    </style>
 </head>
+<body class="selection:bg-cyberRed selection:text-white custom-bg">
 
-<body>
+    <!-- 3D Three.js Background Canvas -->
+    <div id="canvas-container"></div>
 
-  <!-- NAVIGATION -->
-  <header class="navbar">
-    <div class="container nav-inner">
-      <a href="#home" class="logo">HARSH<span>.</span></a>
-
-      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">
-        MENU ☰
-      </button>
-
-      <nav class="nav-links" id="navLinks">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#learning">Learning</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-
-        <div class="hero-copy">
-          <div class="eyebrow">
-            <span class="status-dot"></span>
-            BTech CSE Student · Aspiring Developer
-          </div>
-
-          <h1>
-            HARSH
-            <span class="last-name">BARAIYA<span class="dot">.</span></span>
-          </h1>
-
-          <div class="hero-subtitle">
-            Building digital experiences.
-            <br>
-            Exploring <span>Robotics & Technology.</span>
-          </div>
-
-          <p class="hero-description">
-            I'm a Computer Science student passionate about coding,
-            creative web experiences, artificial intelligence and robotics.
-            I believe in learning by building and turning ideas into reality.
-          </p>
-
-          <div class="hero-buttons">
-            <a href="#projects" class="btn btn-primary">
-              Explore My Work ↗
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-card border-b border-white/10 px-6 py-4 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="font-orbitron font-black text-xl tracking-wider text-cyberRed text-glow">
+                HARSH<span class="text-white">.BARAIYA</span>
             </a>
-
-            <a href="#about" class="btn btn-outline">
-              About Me
+            <div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                <a href="#about" class="hover:text-cyberRed transition">About</a>
+                <a href="#skills" class="hover:text-cyberRed transition">Skills & Stack</a>
+                <a href="#projects" class="hover:text-cyberRed transition">Projects</a>
+                <a href="#contact" class="hover:text-cyberRed transition">Contact</a>
+            </div>
+            <a href="#contact" class="hidden md:inline-block px-5 py-2 rounded-full bg-gradient-to-r from-cyberRed to-rose-600 font-bold text-xs tracking-wider uppercase transition transform hover:scale-105 shadow-lg shadow-cyberRed/30">
+                Let's Connect
             </a>
-          </div>
         </div>
+    </nav>
 
-        <div class="hero-visual">
-          <div class="visual-glow"></div>
+    <!-- Hero Section -->
+    <header class="min-h-screen flex items-center justify-center relative px-6 pt-20">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-center z-10">
+            
+            <!-- Left Info -->
+            <div class="md:col-span-7 text-center md:text-left">
+                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full glass-card mb-6 border border-cyberRed/30 animate-pulse">
+                    <span class="w-2.5 h-2.5 rounded-full bg-cyberRed"></span>
+                    <span class="text-xs font-orbitron tracking-widest uppercase text-gray-300">BTech CSE • RGPV • SRCEM</span>
+                </div>
+                
+                <h1 class="font-orbitron font-black text-4xl sm:text-5xl md:text-6xl tracking-tight mb-4 uppercase">
+                    Harsh <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyberRed to-cyberBlue text-glow">Baraiya</span>
+                </h1>
+                
+                <p class="font-orbitron text-base sm:text-lg md:text-xl text-cyberBlue blue-glow mb-6 tracking-wide">
+                    Developer &bull; Video Editor &bull; Future Robotics Engineer
+                </p>
+                
+                <p class="text-gray-400 text-sm md:text-base mb-8 leading-relaxed">
+                    Welcome to my digital universe. Crafting intelligent systems, immersive web experiences, and high-impact visual edits with precision and passion.
+                </p>
 
-          <div class="portrait-frame" id="portraitFrame">
-            <img
-              src="profile.png.png"
-              alt="Harsh Baraiya - Developer Portrait"
-              onerror="this.style.display='none'; document.getElementById('photoError').style.display='block';"
-            >
-
-            <div class="portrait-overlay"></div>
-
-            <div class="portrait-label">
-              CSE STUDENT · DEVELOPER
-              <strong>HARSH BARAIYA</strong>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                    <a href="#projects" class="px-8 py-3.5 rounded-xl bg-cyberRed font-orbitron font-bold text-sm tracking-wider uppercase hover:bg-rose-600 transition shadow-lg shadow-cyberRed/40 transform hover:-translate-y-0.5">
+                        Explore Work
+                    </a>
+                    <a href="https://www.instagram.com/harshfx.exe/" target="_blank" class="px-8 py-3.5 rounded-xl glass-card font-orbitron font-bold text-sm tracking-wider uppercase hover:bg-white/10 transition border border-white/20 flex items-center gap-2">
+                        <i class="fab fa-instagram text-cyberRed"></i> Editing Reels
+                    </a>
+                </div>
             </div>
 
-            <div id="photoError" style="display:none; position:absolute; inset:0; z-index:4; align-items:center; justify-content:center; text-align:center; color:#ff3b5c; padding:20px; background:#111;">
-              Image not found.<br>
-              Check profile.png.png filename.
+            <!-- Right Profile Image -->
+            <div class="md:col-span-5 flex justify-center">
+                <div class="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-3xl p-2 glass-card animated-profile overflow-hidden border-2 border-cyberRed/50">
+                    <img src="profile.png.png" alt="Harsh Baraiya" class="w-full h-full object-cover rounded-2xl filter contrast-110 hover:scale-105 transition duration-500">
+                    <!-- Corner Cyber Badges -->
+                    <div class="absolute top-4 left-4 bg-cyberDark/80 px-2.5 py-1 rounded-md text-[10px] font-orbitron text-cyberBlue border border-cyberBlue/30 backdrop-blur-md">
+                        CSE Editor
+                    </div>
+                </div>
             </div>
-          </div>
 
-          <div class="floating-tag">
-            <span>✦</span> CODE × CREATIVITY
-          </div>
         </div>
+    </header>
 
-      </div>
-
-      <div class="scroll-indicator">Scroll to explore</div>
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 relative">
+        <div class="max-w-5xl mx-auto">
+            <div class="glass-card rounded-3xl p-8 md:p-12 relative overflow-hidden border border-cyberRed/20">
+                <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-cyberRed/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <h2 class="font-orbitron text-3xl font-bold mb-6 flex items-center gap-3">
+                    <span class="text-cyberRed">#</span> About Me
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                    <div class="md:col-span-2 space-y-4 text-gray-300 leading-relaxed">
+                        <p>
+                            Hello! I'm <strong class="text-white">Harsh Baraiya</strong>, currently pursuing my B.Tech in Computer Science & Engineering (CSE) at <strong class="text-white">SRCEM</strong> under <strong class="text-white">RGPV University</strong>, India. 
+                        </p>
+                        <p>
+                            I deeply enjoy exploring programming, full-stack web development, artificial intelligence, and new technologies. My long-term goal is to work as a <strong class="text-cyberBlue">Robotics Engineer</strong>, seamlessly combining software, electronics, and intelligent automation to build practical real-world solutions.
+                        </p>
+                        <p class="text-sm text-gray-400 italic">
+                            "Currently strengthening my programming fundamentals, executing high-tech projects, and leveling up my creative video editing & content creation game."
+                        </p>
+                    </div>
+                    
+                    <div class="glass-card p-6 rounded-2xl border border-cyberBlue/30 text-center space-y-3">
+                        <div class="w-12 h-12 mx-auto rounded-full bg-cyberBlue/10 flex items-center justify-center text-cyberBlue text-xl">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="font-orbitron font-bold text-lg">Education</h3>
+                        <p class="text-xs text-gray-400">BTech in Computer Science & Engineering</p>
+                        <div class="pt-2 border-t border-white/10 text-xs font-semibold text-cyberRed">SRCEM, RGPV University</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="container">
-        <div class="section-top reveal">
-          <div>
-            <div class="section-number">01 / ABOUT ME</div>
-            <h2 class="section-title">THE MIND<br><span>BEHIND CODE.</span></h2>
-          </div>
+    <!-- Skills & Stack Section -->
+    <section id="skills" class="py-24 px-6 relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-orbitron text-3xl md:text-4xl font-black uppercase tracking-wider mb-3">
+                    Technical & Creative <span class="text-cyberRed">Skills</span>
+                </h2>
+                <p class="text-gray-400 text-sm max-w-xl mx-auto">
+                    The tools, languages, and technical domains I wield to bring ideas to life.
+                </p>
+            </div>
 
-          <p class="section-note">
-            Curious mind. Creative thinking. A journey into technology,
-            one project at a time.
-          </p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <!-- Skill Card -->
+                <div class="glass-card p-5 rounded-2xl text-center group hover:-translate-y-1 transition duration-300">
+                    <div class="text-3xl mb-3 text-cyberBlue group-hover:scale-110 transition"><i class="fab fa-cuttlefish"></i></div>
+                    <h3 class="font-orbitron font-semibold text-sm">C++</h3>
+                    <span class="text-[10px] text-gray-500 uppercase tracking-widest">Language</span>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center group hover:-translate-y-1 transition duration-300">
+                    <div class="text-3xl mb-3 text-cyberRed group-hover:scale-110 transition"><i class="fab fa-python"></i></div>
+                    <h3 class="font-orbitron font-semibold text-sm">Python</h3>
+                    <span class="text-[10px] text-gray-500 uppercase tracking-widest">Core / AI</span>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center group hover:-translate-y-1 transition duration-300">
+                    <div class="text-3xl mb-3 text-orange-500 group-hover:scale-110 transition"><i class="fab fa-html5"></i></div>
+                    <h3 class="font-orbitron font-semibold text-sm">HTML / CSS</h3>
+                    <span class="text-[10px] text-gray-500 uppercase tracking-widest">Web Dev</span>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center group hover:-translate-y-1 transition duration-300">
+                    <div class="text-3xl mb-3 text-purple-400 group-hover:scale-110 transition"><i class="fas fa-database"></i></div>
+                    <h3 class="font-orbitron font-semibold text-sm">MySQL</h3>
+                    <span class="text-[10px] text-gray-500 uppercase tracking-widest">Database</span>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center group hover:-translate-y-1 transition duration-300">
+                    <div class="text-3xl mb-3 text-red-500 group-hover:scale-110 transition"><i class="fab fa-git-alt"></i></div>
+                    <h3 class="font-orbitron font-semibold text-sm">Git & GitHub</h3>
+                    <span class="text-[10px] text-gray-500 uppercase tracking-widest">Version Control</span>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center group hover:-translate-y-1 transition duration-300">
+                    <div class="text-3xl mb-3 text-blue-400 group-hover:scale-110 transition"><i class="fas fa-code"></i></div>
+                    <h3 class="font-orbitron font-semibold text-sm">VS Code</h3>
+                    <span class="text-[10px] text-gray-500 uppercase tracking-widest">Environment</span>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center group hover:-translate-y-1 transition duration-300">
+                    <div class="text-3xl mb-3 text-pink-500 group-hover:scale-110 transition"><i class="fas fa-video"></i></div>
+                    <h3 class="font-orbitron font-semibold text-sm">Video Editing</h3>
+                    <span class="text-[10px] text-gray-500 uppercase tracking-widest">Creative</span>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center group hover:-translate-y-1 transition duration-300">
+                    <div class="text-3xl mb-3 text-amber-400 group-hover:scale-110 transition"><i class="fas fa-film"></i></div>
+                    <h3 class="font-orbitron font-semibold text-sm">Reels & Edits</h3>
+                    <span class="text-[10px] text-gray-500 uppercase tracking-widest">Content</span>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center group hover:-translate-y-1 transition duration-300">
+                    <div class="text-3xl mb-3 text-emerald-400 group-hover:scale-110 transition"><i class="fas fa-robot"></i></div>
+                    <h3 class="font-orbitron font-semibold text-sm">Robotics</h3>
+                    <span class="text-[10px] text-gray-500 uppercase tracking-widest">Hardware / AI</span>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center group hover:-translate-y-1 transition duration-300">
+                    <div class="text-3xl mb-3 text-indigo-400 group-hover:scale-110 transition"><i class="fas fa-cogs"></i></div>
+                    <h3 class="font-orbitron font-semibold text-sm">Automation</h3>
+                    <span class="text-[10px] text-gray-500 uppercase tracking-widest">Systems</span>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center group hover:-translate-y-1 transition duration-300">
+                    <div class="text-3xl mb-3 text-cyan-400 group-hover:scale-110 transition"><i class="fas fa-brain"></i></div>
+                    <h3 class="font-orbitron font-semibold text-sm">AI Tools</h3>
+                    <span class="text-[10px] text-gray-500 uppercase tracking-widest">Innovation</span>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center group hover:-translate-y-1 transition duration-300">
+                    <div class="text-3xl mb-3 text-rose-400 group-hover:scale-110 transition"><i class="fas fa-bullhorn"></i></div>
+                    <h3 class="font-orbitron font-semibold text-sm">Creation</h3>
+                    <span class="text-[10px] text-gray-500 uppercase tracking-widest">Media</span>
+                </div>
+            </div>
         </div>
-
-        <div class="about-grid reveal">
-          <div class="about-card">
-            <div class="about-photo">
-              <img src="profile.png.png" alt="Harsh Baraiya">
-            </div>
-            <div class="card-bottom">
-              COMPUTER SCIENCE & ENGINEERING<br>
-              STUDENT · INDIA
-            </div>
-          </div>
-
-          <div class="about-text">
-            <h3>Hello, I'm Harsh.</h3>
-
-            <p>
-              I'm pursuing <strong>BTech in Computer Science & Engineering</strong>.
-              I enjoy exploring programming, web development and new technologies.
-            </p>
-
-            <p>
-              My long-term goal is to work in <strong>Robotics Engineering</strong>,
-              combining software, electronics and intelligent systems to build
-              useful real-world solutions.
-            </p>
-
-            <p>
-              I'm currently strengthening my programming fundamentals,
-              developing projects and building my technical portfolio.
-            </p>
-
-            <div class="about-stats">
-              <div class="stat">
-                <h4>CSE</h4>
-                <p>My Field</p>
-              </div>
-
-              <div class="stat">
-                <h4>01</h4>
-                <p>Goal — Robotics</p>
-              </div>
-
-              <div class="stat">
-                <h4>∞</h4>
-                <p>Learning Mindset</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills">
-      <div class="container">
-        <div class="section-top reveal">
-          <div>
-            <div class="section-number">02 / SKILLS & TOOLS</div>
-            <h2 class="section-title">MY TECH<br><span>STACK.</span></h2>
-          </div>
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-6 relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-orbitron text-3xl md:text-4xl font-black uppercase tracking-wider mb-3">
+                    Featured <span class="text-cyberRed">Projects</span>
+                </h2>
+                <p class="text-gray-400 text-sm max-w-xl mx-auto">
+                    Showcasing key engineering feats, AI development, and upcoming robotics endeavors.
+                </p>
+            </div>
 
-          <p class="section-note">
-            Technologies I'm learning and using to build my foundation.
-          </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="glass-card rounded-3xl p-6 flex flex-col justify-between border border-cyberRed/20 hover:border-cyberRed transition duration-300">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-orbitron bg-cyberRed/20 text-cyberRed border border-cyberRed/30">AI System</span>
+                            <i class="fas fa-robot text-xl text-cyberRed"></i>
+                        </div>
+                        <h3 class="font-orbitron font-bold text-xl mb-2">Ziva AI Assistant</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            An intelligent conversational and task assistant engineered in Python, built to streamline automation and digital assistance.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10 text-xs font-semibold text-gray-300">
+                        <span>Python</span>
+                        <span class="text-cyberRed">Active Project</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-card rounded-3xl p-6 flex flex-col justify-between border border-cyberBlue/20 hover:border-cyberBlue transition duration-300">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-orbitron bg-cyberBlue/20 text-cyberBlue border border-cyberBlue/30">Web Tech</span>
+                            <i class="fas fa-globe text-xl text-cyberBlue"></i>
+                        </div>
+                        <h3 class="font-orbitron font-bold text-xl mb-2">Personal Portfolio</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            A hyper-immersive 3D responsive digital portfolio featuring custom shaders, glassmorphism UI, and cinematic cyberpunk styling.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10 text-xs font-semibold text-gray-300">
+                        <span>HTML / CSS / JS / Three.js</span>
+                        <span class="text-cyberBlue">Deployed</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass-card rounded-3xl p-6 flex flex-col justify-between border border-purple-500/20 hover:border-purple-500 transition duration-300">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-orbitron bg-purple-500/20 text-purple-400 border border-purple-500/30">Mini Apps</span>
+                            <i class="fas fa-code text-xl text-purple-400"></i>
+                        </div>
+                        <h3 class="font-orbitron font-bold text-xl mb-2">Python Mini Projects</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            A collection of algorithmic tools, utility scripts, and automation mini-programs built to sharpen logic and problem-solving.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10 text-xs font-semibold text-gray-300">
+                        <span>Python Core</span>
+                        <span class="text-purple-400">Completed</span>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="glass-card rounded-3xl p-6 flex flex-col justify-between border border-amber-500/20 hover:border-amber-500 transition duration-300 md:col-span-2 lg:col-span-3">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-orbitron bg-amber-500/20 text-amber-400 border border-amber-500/30">Future Vision</span>
+                            <i class="fas fa-microchip text-xl text-amber-400"></i>
+                        </div>
+                        <h3 class="font-orbitron font-bold text-xl mb-2">Robotics Experiments & Autonomous Systems</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Upcoming robotics experiments merging microcontrollers, sensor integration, and intelligent automation as a stepping stone towards professional Robotics Engineering.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10 text-xs font-semibold text-gray-300">
+                        <span>Hardware & AI Integration</span>
+                        <span class="text-amber-400">In Development</span>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="skills-grid">
-
-          <div class="skill-card reveal">
-            <div class="skill-index">01 — PROGRAMMING</div>
-            <h3>Programming</h3>
-            <p>Developing logic and problem-solving fundamentals.</p>
-            <div class="skill-tags">
-              <span>C</span>
-              <span>C++</span>
-              <span>Python</span>
-            </div>
-          </div>
-
-          <div class="skill-card reveal">
-            <div class="skill-index">02 — WEB</div>
-            <h3>Web Development</h3>
-            <p>Building responsive websites and interactive interfaces.</p>
-            <div class="skill-tags">
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>JavaScript</span>
-            </div>
-          </div>
-
-          <div class="skill-card reveal">
-            <div class="skill-index">03 — TOOLS</div>
-            <h3>Developer Tools</h3>
-            <p>Tools for writing, managing and developing code.</p>
-            <div class="skill-tags">
-              <span>Git</span>
-              <span>GitHub</span>
-              <span>VS Code</span>
-            </div>
-          </div>
-
-          <div class="skill-card reveal">
-            <div class="skill-index">04 — DATABASE</div>
-            <h3>Database</h3>
-            <p>Learning how to store, manage and query data.</p>
-            <div class="skill-tags">
-              <span>MySQL</span>
-              <span>SQL</span>
-              <span>DBMS</span>
-            </div>
-          </div>
-
-          <div class="skill-card reveal">
-            <div class="skill-index">05 — INTEREST</div>
-            <h3>Robotics & AI</h3>
-            <p>Exploring intelligent machines and automation.</p>
-            <div class="skill-tags">
-              <span>Robotics</span>
-              <span>AI</span>
-              <span>Automation</span>
-            </div>
-          </div>
-
-          <div class="skill-card reveal">
-            <div class="skill-index">06 — CREATIVE</div>
-            <h3>Creative Thinking</h3>
-            <p>Combining technology with design and ideas.</p>
-            <div class="skill-tags">
-              <span>UI Design</span>
-              <span>Problem Solving</span>
-              <span>Creativity</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects">
-      <div class="container">
-        <div class="section-top reveal">
-          <div>
-            <div class="section-number">03 / SELECTED PROJECTS</div>
-            <h2 class="section-title">THINGS I'VE<br><span>BUILT.</span></h2>
-          </div>
+    <!-- Contact & Social Details Section -->
+    <section id="contact" class="py-24 px-6 relative">
+        <div class="max-w-4xl mx-auto">
+            <div class="glass-card rounded-3xl p-8 md:p-12 border border-cyberRed/30 relative overflow-hidden text-center">
+                <div class="absolute -left-20 -top-20 w-64 h-64 bg-cyberBlue/10 rounded-full blur-3xl pointer-events-none"></div>
 
-          <p class="section-note">
-            Projects, experiments and ideas from my learning journey.
-          </p>
+                <h2 class="font-orbitron text-3xl md:text-4xl font-bold uppercase tracking-wider mb-4">
+                    Let's Build <span class="text-cyberRed">Together</span>
+                </h2>
+                <p class="text-gray-400 text-sm max-w-lg mx-auto mb-10">
+                    Whether you want to collaborate on code, discuss robotics engineering, or explore video editing projects, my inbox is open!
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-6 mb-10">
+                    <!-- Email -->
+                    <a href="mailto:Harshbaraiya439@gmail.com" class="glass-card px-6 py-4 rounded-2xl flex items-center gap-3 hover:border-cyberRed transition group">
+                        <div class="w-10 h-10 rounded-xl bg-cyberRed/10 flex items-center justify-center text-cyberRed group-hover:scale-110 transition">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-[10px] text-gray-500 uppercase tracking-widest">Email Me</div>
+                            <div class="text-xs font-semibold">Harshbaraiya439@gmail.com</div>
+                        </div>
+                    </a>
+
+                    <!-- GitHub -->
+                    <a href="https://github.com/harshbaraiya439-cyber" target="_blank" class="glass-card px-6 py-4 rounded-2xl flex items-center gap-3 hover:border-cyberBlue transition group">
+                        <div class="w-10 h-10 rounded-xl bg-cyberBlue/10 flex items-center justify-center text-cyberBlue group-hover:scale-110 transition">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-[10px] text-gray-500 uppercase tracking-widest">GitHub</div>
+                            <div class="text-xs font-semibold">harshbaraiya439-cyber</div>
+                        </div>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/harsh-baraiya-a105b33b8/" target="_blank" class="glass-card px-6 py-4 rounded-2xl flex items-center gap-3 hover:border-blue-500 transition group">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 group-hover:scale-110 transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-[10px] text-gray-500 uppercase tracking-widest">LinkedIn</div>
+                            <div class="text-xs font-semibold">Harsh Baraiya</div>
+                        </div>
+                    </a>
+
+                    <!-- Instagram Video Editing ID -->
+                    <a href="https://www.instagram.com/harshfx.exe/" target="_blank" class="glass-card px-6 py-4 rounded-2xl flex items-center gap-3 hover:border-pink-500 transition group">
+                        <div class="w-10 h-10 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-500 group-hover:scale-110 transition">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-[10px] text-gray-500 uppercase tracking-widest">Editing ID</div>
+                            <div class="text-xs font-semibold">@harshfx.exe</div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="text-xs text-gray-500 pt-6 border-t border-white/10">
+                    &copy; 2026 Harsh Baraiya. All Rights Reserved. SRCEM • RGPV University, India.
+                </div>
+            </div>
         </div>
-
-        <div class="projects-grid">
-
-          <article class="project-card reveal">
-            <div class="project-visual">
-              <div class="project-symbol">HB.</div>
-            </div>
-
-            <div class="project-content">
-              <div class="project-type">01 — WEB DEVELOPMENT</div>
-              <h3>Personal Portfolio</h3>
-              <p>
-                A cinematic portfolio website showcasing my profile,
-                skills, projects and learning journey.
-              </p>
-              <a class="project-link"
-                 href="https://github.com/harshbaraiya439-cyber/Harsh-portfolio"
-                 target="_blank" rel="noopener">
-                View on GitHub ↗
-              </a>
-            </div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-visual">
-              <div class="project-symbol">AI.</div>
-            </div>
-
-            <div class="project-content">
-              <div class="project-type">02 — AI EXPERIMENT</div>
-              <h3>Ziva AI Assistant</h3>
-              <p>
-                A personal AI assistant concept with a desktop interface
-                and AI-powered interaction. Development is currently paused.
-              </p>
-              <span class="project-link">Project in Progress</span>
-            </div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-visual">
-              <div class="project-symbol">SQL.</div>
-            </div>
-
-            <div class="project-content">
-              <div class="project-type">03 — DATABASE</div>
-              <h3>SQL Practice</h3>
-              <p>
-                Learning database concepts and practicing SQL queries
-                for data management.
-              </p>
-              <span class="project-link">Learning Project</span>
-            </div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-visual">
-              <div class="project-symbol">BOT.</div>
-            </div>
-
-            <div class="project-content">
-              <div class="project-type">04 — FUTURE PROJECT</div>
-              <h3>Robotics Experiments</h3>
-              <p>
-                My upcoming journey into robotics, automation,
-                sensors and intelligent systems.
-              </p>
-              <span class="project-link">Coming Soon</span>
-            </div>
-          </article>
-
-        </div>
-      </div>
     </section>
 
-    <!-- LEARNING -->
-    <section id="learning">
-      <div class="container">
-        <div class="section-top reveal">
-          <div>
-            <div class="section-number">04 / CURRENT FOCUS</div>
-            <h2 class="section-title">ALWAYS<br><span>EVOLVING.</span></h2>
-          </div>
-        </div>
+    <!-- Three.js 3D Background Script -->
+    <script>
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 
-        <div class="learning-panel reveal">
-          <h3>Currently working on <span>my future.</span></h3>
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
 
-          <p>
-            I'm improving my programming fundamentals, learning development
-            tools and exploring technologies that can help me become a
-            Robotics Engineer. My focus is on consistent learning and
-            practical projects.
-          </p>
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 1500;
+        const posArray = new Float32Array(particlesCount * 3);
 
-          <div class="learning-list">
-            <span>C++ & DSA</span>
-            <span>Python</span>
-            <span>Web Development</span>
-            <span>Git & GitHub</span>
-            <span>Robotics Fundamentals</span>
-            <span>AI & Automation</span>
-          </div>
-        </div>
-      </div>
-    </section>
+        for(let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 15;
+        }
 
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="container">
-        <div class="section-top reveal">
-          <div>
-            <div class="section-number">05 / GET IN TOUCH</div>
-            <h2 class="section-title">LET'S<br><span>CONNECT.</span></h2>
-          </div>
-        </div>
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 
-        <div class="contact-grid reveal">
-          <div>
-            <h3 class="contact-heading">
-              HAVE AN<br>
-              <span>IDEA?</span>
-            </h3>
-
-            <p class="contact-intro">
-              I'm open to connecting with developers, students,
-              tech enthusiasts and people who love building things.
-            </p>
-          </div>
-
-          <div class="contact-links">
-
-            <a class="contact-link"
-               href="https://github.com/harshbaraiya439-cyber"
-               target="_blank" rel="noopener">
-              <div>
-                <small>Code & Projects</small>
-                GitHub
-              </div>
-              <span class="arrow">↗</span>
-            </a>
-
-            <a class="contact-link"
-               href="https://www.linkedin.com/in/harsh-baraiya-a105b33b8//"
-               target="_blank" rel="noopener">
-              <div>
-                <small>Professional Network</small>
-                LinkedIn
-              </div>
-              <span class="arrow">↗</span>
-            </a>
-
-            <a class="contact-link"
-               href="mailto:harshbaraiya439@gmail.com">
-              <div>
-                <small>Send Me an Email</small>
-                Email
-              </div>
-              <span class="arrow">↗</span>
-            </a>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container footer-inner">
-      <div>© <span id="year"></span> <strong>HARSH BARAIYA</strong></div>
-      <div>DESIGNED WITH CODE & CREATIVITY.</div>
-      <a href="#home">BACK TO TOP ↑</a>
-    </div>
-  </footer>
-
-  <script>
-    // Mobile navigation
-    const menuBtn = document.getElementById("menuBtn");
-    const navLinks = document.getElementById("navLinks");
-
-    menuBtn.addEventListener("click", () => {
-      navLinks.classList.toggle("open");
-
-      menuBtn.textContent = navLinks.classList.contains("open")
-        ? "CLOSE ✕"
-        : "MENU ☰";
-    });
-
-    // Close mobile menu after clicking a navigation link
-    document.querySelectorAll(".nav-links a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menuBtn.textContent = "MENU ☰";
-      });
-    });
-
-    // Reveal sections on scroll
-    const revealElements = document.querySelectorAll(".reveal");
-
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            revealObserver.unobserve(entry.target);
-          }
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.025,
+            color: '#ff0055',
+            transparent: true,
+            opacity: 0.8,
+            blending: THREE.AdditiveBlending
         });
-      },
-      {
-        threshold: 0.12
-      }
-    );
 
-    revealElements.forEach(element => {
-      revealObserver.observe(element);
-    });
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
 
-    // Subtle 3D portrait movement on desktop
-    const portraitFrame = document.getElementById("portraitFrame");
+        camera.position.z = 3;
 
-    if (window.matchMedia("(min-width: 901px)").matches) {
-      portraitFrame.addEventListener("mousemove", (event) => {
-        const rect = portraitFrame.getBoundingClientRect();
+        let mouseX = 0;
+        let mouseY = 0;
 
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
+        document.addEventListener('mousemove', (event) => {
+            mouseX = event.clientX / window.innerWidth - 0.5;
+            mouseY = event.clientY / window.innerHeight - 0.5;
+        });
 
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
+        const clock = new THREE.Clock();
 
-        const rotateY = ((x - centerX) / centerX) * 5;
-        const rotateX = ((centerY - y) / centerY) * 4;
+        function animate() {
+            requestAnimationFrame(animate);
+            const elapsedTime = clock.getElapsedTime();
 
-        portraitFrame.style.transform =
-          `rotateY(${-10 + rotateY}deg) rotateX(${2 + rotateX}deg)`;
-      });
+            particlesMesh.rotation.y = elapsedTime * 0.05 + mouseX * 0.5;
+            particlesMesh.rotation.x = elapsedTime * 0.03 + mouseY * 0.5;
 
-      portraitFrame.addEventListener("mouseleave", () => {
-        portraitFrame.style.transform = "rotateY(-10deg) rotateX(2deg)";
-      });
-    }
+            renderer.render(scene, camera);
+        }
 
-    // Dynamic copyright year
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-  </script>
+        animate();
 
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
 </body>
 </html>
