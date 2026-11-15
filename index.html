@@ -6,8 +6,6 @@
     <title>Harsh Baraiya | Elite Editor & Developer Portfolio</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Three.js for 3D Background -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <!-- AOS Scroll Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -43,33 +41,24 @@
             overflow-x: hidden;
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        /* Cinematic Background with portfolio-bg.png.png */
+        /* Fast Loading CSS Background Mesh */
         .cinematic-bg {
-            background-image: linear-gradient(to bottom, rgba(3,7,18,0.88), rgba(3,7,18,0.98)), url('portfolio-bg.png.png');
+            background: linear-gradient(to bottom, rgba(3,7,18,0.92), rgba(3,7,18,0.99)), url('portfolio-bg.png.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
-        #canvas-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            pointer-events: none;
-        }
         .glass-panel {
             background: rgba(11, 15, 25, 0.85);
-            backdrop-filter: blur(16px);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(0, 240, 255, 0.2);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            transition: all 0.3s ease;
         }
         .glass-panel:hover {
             border-color: rgba(0, 240, 255, 0.7);
-            box-shadow: 0 0 35px rgba(0, 240, 255, 0.3);
-            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.3);
+            transform: translateY(-4px);
         }
         .cyan-glow {
             text-shadow: 0 0 25px rgba(0, 240, 255, 0.8);
@@ -77,43 +66,48 @@
         .pink-glow {
             text-shadow: 0 0 25px rgba(255, 0, 85, 0.8);
         }
-        /* Intro Splash Screen */
+        /* Full Page Intro Screen with cinematic image */
         #intro-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: #030712;
             z-index: 9999;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
             transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .intro-bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.4) contrast(1.1);
+            animation: introZoom 10s ease-in-out infinite alternate;
+            z-index: -1;
+        }
+        @keyframes introZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
         }
         .fade-out {
             opacity: 0;
             visibility: hidden;
         }
-        /* Intro Image Animation */
-        @keyframes introFloat {
-            0%, 100% { transform: translateY(0px) scale(1); filter: drop-shadow(0 0 20px rgba(0,240,255,0.4)); }
-            50% { transform: translateY(-12px) scale(1.02); filter: drop-shadow(0 0 40px rgba(255,0,85,0.7)); }
-        }
-        .intro-animated-img {
-            animation: introFloat 4s ease-in-out infinite;
-        }
-        /* Profile Image Hover & Pulse Effects */
+        /* Profile Image Animation */
         .animated-profile {
-            transition: transform 0.5s ease;
+            transition: transform 0.4s ease;
             box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
         }
         .animated-profile:hover {
-            transform: scale(1.03) rotate(1deg);
-            box-shadow: 0 0 50px rgba(255, 0, 85, 0.7);
+            transform: scale(1.03);
+            box-shadow: 0 0 45px rgba(255, 0, 85, 0.7);
         }
-        /* Timeline Bar Vibe */
         .timeline-bar {
             background: linear-gradient(90deg, #00f0ff, #8b5cf6, #ff0055);
             height: 3px;
@@ -133,32 +127,29 @@
 </head>
 <body class="selection:bg-cyberCyan selection:text-darkBg cinematic-bg">
 
-    <!-- INTRO SPLASH SCREEN WITH INTRO IMAGE & ANIMATIONS -->
+    <!-- FULL PAGE CINEMATIC INTRO SCREEN -->
     <div id="intro-screen">
-        <div class="text-center px-6 max-w-2xl space-y-6" data-aos="zoom-in" data-aos-duration="1000">
-            <div class="relative w-40 h-40 sm:w-48 sm:h-48 mx-auto mb-4 rounded-full p-1.5 glass-panel border-2 border-cyberCyan/60 intro-animated-img overflow-hidden">
-                <img src="intro.png.png" alt="Harsh Baraiya Intro" class="w-full h-full object-cover rounded-full">
-            </div>
-            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full glass-panel border border-cyberCyan/40 font-mono text-xs animate-pulse">
+        <img src="intro.png.png" alt="Intro Background" class="intro-bg-img">
+        <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/60 to-transparent"></div>
+        
+        <div class="relative z-10 text-center px-6 max-w-3xl space-y-6" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full glass-panel border border-cyberCyan/50 font-mono text-xs animate-pulse">
                 <span class="w-2.5 h-2.5 rounded-full bg-cyberCyan"></span>
-                <span class="text-gray-300">SYSTEM INITIALIZED // 00:00:01:00</span>
+                <span class="text-gray-200">SYSTEM INITIALIZED // STUDIO MODE</span>
             </div>
-            <h1 class="font-orbitron font-black text-4xl sm:text-6xl tracking-wider uppercase text-white">
+            <h1 class="font-orbitron font-black text-4xl sm:text-7xl tracking-wider uppercase text-white drop-shadow-lg">
                 HARSH <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyberCyan to-cyberPink cyan-glow">BARAIYA</span>
             </h1>
-            <p class="font-mono text-sm sm:text-base text-gray-400 tracking-widest uppercase">
-                [ ELITE EDITOR &bull; DEVELOPER &bull; ROBOTICS ASPIRANT ]
+            <p class="font-mono text-sm sm:text-lg text-gray-300 tracking-widest uppercase">
+                [ ELITE VIDEO EDITOR &bull; FULL-STACK DEVELOPER &bull; ROBOTICS ASPIRANT ]
             </p>
             <div class="pt-4">
-                <button onclick="enterPortfolio()" class="px-8 py-4 rounded-xl bg-gradient-to-r from-cyberCyan to-blue-600 text-darkBg font-orbitron font-extrabold text-sm tracking-widest uppercase hover:scale-105 transition transform shadow-lg shadow-cyberCyan/40 cursor-pointer">
+                <button onclick="enterPortfolio()" class="px-8 py-4 rounded-xl bg-gradient-to-r from-cyberCyan to-blue-600 text-darkBg font-orbitron font-extrabold text-sm tracking-widest uppercase hover:scale-105 transition transform shadow-xl shadow-cyberCyan/40 cursor-pointer">
                     ENTER DIGITAL UNIVERSE <i class="fas fa-play ml-2"></i>
                 </button>
             </div>
         </div>
     </div>
-
-    <!-- 3D Three.js Particle Background Canvas -->
-    <div id="canvas-container"></div>
 
     <!-- Navigation Bar -->
     <nav class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-white/5 px-6 py-4">
@@ -170,7 +161,7 @@
                 <a href="#about" class="hover:text-cyberCyan transition">01. ABOUT</a>
                 <a href="#skills" class="hover:text-cyberCyan transition">02. SKILLS</a>
                 <a href="#projects" class="hover:text-cyberCyan transition">03. PROJECTS</a>
-                <a href="#editor-showcase" class="hover:text-cyberCyan transition">04. REELS & EDITS</a>
+                <a href="#video-editing" class="hover:text-cyberCyan transition">04. VIDEO STUDIO</a>
                 <a href="#contact" class="hover:text-cyberCyan transition">05. CONTACT</a>
             </div>
             <a href="#contact" class="hidden md:inline-block px-5 py-2 rounded-lg bg-cyberCyan text-darkBg font-orbitron font-bold text-xs tracking-wider uppercase transition transform hover:scale-105 shadow-lg shadow-cyberCyan/30">
@@ -184,7 +175,6 @@
     <header class="min-h-screen flex items-center justify-center relative px-6 pt-28 pb-16">
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-center z-10">
             
-            <!-- Left Bio -->
             <div class="md:col-span-7 text-center md:text-left space-y-6" data-aos="fade-right" data-aos-duration="1000" data-aos-mirror="true">
                 <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full glass-panel border border-cyberCyan/40 font-mono text-xs">
                     <span class="w-2.5 h-2.5 rounded-full bg-cyberCyan animate-ping"></span>
@@ -200,7 +190,7 @@
                 </p>
                 
                 <p class="text-gray-400 text-sm md:text-base leading-relaxed max-w-xl font-sans">
-                    Bridging the gap between clean code and cinematic visual storytelling. Building autonomous systems, high-performance web apps, and thumb-stopping edits.
+                    Bridging clean software code with high-end cinematic visual storytelling. Building autonomous systems, web apps, and professional edits.
                 </p>
 
                 <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-4">
@@ -213,10 +203,9 @@
                 </div>
             </div>
 
-            <!-- Right Profile Image with 3D Tilt & Glow -->
             <div class="md:col-span-5 flex justify-center" data-aos="fade-left" data-aos-duration="1000" data-aos-mirror="true">
                 <div class="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-3xl p-3 glass-panel animated-profile overflow-hidden border-2 border-cyberCyan/50">
-                    <img src="profile.png.png" alt="Harsh Baraiya Profile" class="w-full h-full object-cover rounded-2xl filter contrast-110 brightness-105">
+                    <img src="profile.png.png" alt="Harsh Baraiya Profile" class="w-full h-full object-cover rounded-2xl filter contrast-110 brightness-105" loading="lazy">
                     <div class="absolute bottom-5 left-5 bg-darkBg/90 px-3.5 py-1.5 rounded-lg text-xs font-mono text-cyberCyan border border-cyberCyan/40 backdrop-blur-md flex items-center gap-2">
                         <i class="fas fa-video text-cyberPink"></i> EDITOR &amp; CSE DEV
                     </div>
@@ -242,7 +231,7 @@
                             Hello! I'm <strong class="text-white">Harsh Baraiya</strong>, currently pursuing my B.Tech in Computer Science & Engineering (CSE) at <strong class="text-white">SRCEM</strong> under <strong class="text-white">RGPV University</strong>, India.
                         </p>
                         <p>
-                            I have a dual passion: writing crisp code for software & web solutions, and crafting high-end cinematic edits as a professional video editor. My ultimate long-term career goal is to work as a <strong class="text-cyberCyan">Robotics Engineer</strong>, merging artificial intelligence, electronics, and hardware automation.
+                            I have a dual passion: writing crisp code for software & web solutions, and crafting cinematic edits as a professional video editor. My long-term goal is to work as a <strong class="text-cyberCyan">Robotics Engineer</strong>, merging AI, electronics, and hardware automation.
                         </p>
                         <p class="text-xs text-gray-400 font-mono">
                             // Status: Actively building projects, mastering Python/C++, and pushing creative boundaries on Instagram (@harshfx.exe).
@@ -262,7 +251,7 @@
         </div>
     </section>
 
-    <!-- Skills Section with Circular Progress Animations -->
+    <!-- Skills Section with Circular Animations -->
     <section id="skills" class="py-24 px-6 relative">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up" data-aos-mirror="true">
@@ -274,15 +263,14 @@
                 </p>
             </div>
 
-            <!-- Circular Animated Skills Grid -->
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6" data-aos="fade-up" data-aos-duration="1000" data-aos-mirror="true">
                 
-                <!-- Skill 1: C++ -->
+                <!-- Skill 1 -->
                 <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
                     <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
                         <svg class="w-full h-full transform -rotate-90">
                             <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
-                            <circle cx="40" cy="40" r="34" stroke="#00f0ff" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="30" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                            <circle cx="40" cy="40" r="34" stroke="#00f0ff" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="30" stroke-linecap="round" fill="transparent"/>
                         </svg>
                         <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-cyberCyan">85%</div>
                     </div>
@@ -290,12 +278,12 @@
                     <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">Language</span>
                 </div>
 
-                <!-- Skill 2: Python -->
+                <!-- Skill 2 -->
                 <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
                     <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
                         <svg class="w-full h-full transform -rotate-90">
                             <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
-                            <circle cx="40" cy="40" r="34" stroke="#ff0055" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="40" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                            <circle cx="40" cy="40" r="34" stroke="#ff0055" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="40" stroke-linecap="round" fill="transparent"/>
                         </svg>
                         <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-cyberPink">90%</div>
                     </div>
@@ -303,12 +291,12 @@
                     <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">Core / AI</span>
                 </div>
 
-                <!-- Skill 3: Web Dev -->
+                <!-- Skill 3 -->
                 <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
                     <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
                         <svg class="w-full h-full transform -rotate-90">
                             <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
-                            <circle cx="40" cy="40" r="34" stroke="#8b5cf6" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="50" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                            <circle cx="40" cy="40" r="34" stroke="#8b5cf6" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="50" stroke-linecap="round" fill="transparent"/>
                         </svg>
                         <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-accentViolet">80%</div>
                     </div>
@@ -316,12 +304,12 @@
                     <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">Web Dev</span>
                 </div>
 
-                <!-- Skill 4: MySQL -->
+                <!-- Skill 4 -->
                 <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
                     <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
                         <svg class="w-full h-full transform -rotate-90">
                             <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
-                            <circle cx="40" cy="40" r="34" stroke="#00f0ff" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="60" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                            <circle cx="40" cy="40" r="34" stroke="#00f0ff" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="60" stroke-linecap="round" fill="transparent"/>
                         </svg>
                         <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-cyberCyan">75%</div>
                     </div>
@@ -329,12 +317,12 @@
                     <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">Database</span>
                 </div>
 
-                <!-- Skill 5: Git & GitHub -->
+                <!-- Skill 5 -->
                 <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
                     <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
                         <svg class="w-full h-full transform -rotate-90">
                             <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
-                            <circle cx="40" cy="40" r="34" stroke="#ff0055" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="45" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                            <circle cx="40" cy="40" r="34" stroke="#ff0055" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="45" stroke-linecap="round" fill="transparent"/>
                         </svg>
                         <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-cyberPink">85%</div>
                     </div>
@@ -342,12 +330,12 @@
                     <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">VCS</span>
                 </div>
 
-                <!-- Skill 6: Video Editing -->
+                <!-- Skill 6 -->
                 <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
                     <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
                         <svg class="w-full h-full transform -rotate-90">
                             <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
-                            <circle cx="40" cy="40" r="34" stroke="#8b5cf6" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="25" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                            <circle cx="40" cy="40" r="34" stroke="#8b5cf6" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="25" stroke-linecap="round" fill="transparent"/>
                         </svg>
                         <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-accentViolet">95%</div>
                     </div>
@@ -355,12 +343,12 @@
                     <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">Creative</span>
                 </div>
 
-                <!-- Skill 7: Reels & Content -->
+                <!-- Skill 7 -->
                 <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
                     <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
                         <svg class="w-full h-full transform -rotate-90">
                             <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
-                            <circle cx="40" cy="40" r="34" stroke="#00f0ff" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="30" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                            <circle cx="40" cy="40" r="34" stroke="#00f0ff" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="30" stroke-linecap="round" fill="transparent"/>
                         </svg>
                         <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-cyberCyan">92%</div>
                     </div>
@@ -368,12 +356,12 @@
                     <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">Content</span>
                 </div>
 
-                <!-- Skill 8: Robotics -->
+                <!-- Skill 8 -->
                 <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
                     <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
                         <svg class="w-full h-full transform -rotate-90">
                             <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
-                            <circle cx="40" cy="40" r="34" stroke="#ff0055" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="70" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                            <circle cx="40" cy="40" r="34" stroke="#ff0055" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="70" stroke-linecap="round" fill="transparent"/>
                         </svg>
                         <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-cyberPink">70%</div>
                     </div>
@@ -381,12 +369,12 @@
                     <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">Hardware</span>
                 </div>
 
-                <!-- Skill 9: Automation -->
+                <!-- Skill 9 -->
                 <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
                     <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
                         <svg class="w-full h-full transform -rotate-90">
                             <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
-                            <circle cx="40" cy="40" r="34" stroke="#8b5cf6" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="50" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                            <circle cx="40" cy="40" r="34" stroke="#8b5cf6" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="50" stroke-linecap="round" fill="transparent"/>
                         </svg>
                         <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-accentViolet">82%</div>
                     </div>
@@ -394,12 +382,12 @@
                     <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">Systems</span>
                 </div>
 
-                <!-- Skill 10: AI Tools -->
+                <!-- Skill 10 -->
                 <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
                     <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
                         <svg class="w-full h-full transform -rotate-90">
                             <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
-                            <circle cx="40" cy="40" r="34" stroke="#00f0ff" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="35" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                            <circle cx="40" cy="40" r="34" stroke="#00f0ff" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="35" stroke-linecap="round" fill="transparent"/>
                         </svg>
                         <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-cyberCyan">88%</div>
                     </div>
@@ -407,12 +395,12 @@
                     <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">Innovation</span>
                 </div>
 
-                <!-- Skill 11: VS Code -->
+                <!-- Skill 11 -->
                 <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
                     <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
                         <svg class="w-full h-full transform -rotate-90">
                             <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
-                            <circle cx="40" cy="40" r="34" stroke="#ff0055" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="30" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                            <circle cx="40" cy="40" r="34" stroke="#ff0055" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="30" stroke-linecap="round" fill="transparent"/>
                         </svg>
                         <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-cyberPink">90%</div>
                     </div>
@@ -420,12 +408,12 @@
                     <span class="text-[10px] text-gray-400 uppercase tracking-widest font-mono">IDE</span>
                 </div>
 
-                <!-- Skill 12: Content Creation -->
+                <!-- Skill 12 -->
                 <div class="glass-panel p-5 rounded-2xl text-center group flex flex-col items-center justify-center">
                     <div class="relative w-20 h-20 mb-3 flex items-center justify-center">
                         <svg class="w-full h-full transform -rotate-90">
                             <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent"/>
-                            <circle cx="40" cy="40" r="34" stroke="#8b5cf6" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="40" stroke-linecap="round" fill="transparent" class="transition-all duration-1000"/>
+                            <circle cx="40" cy="40" r="34" stroke="#8b5cf6" stroke-width="6" stroke-dasharray="213" stroke-dashoffset="40" stroke-linecap="round" fill="transparent"/>
                         </svg>
                         <div class="absolute inset-0 flex items-center justify-center font-orbitron font-bold text-sm text-accentViolet">88%</div>
                     </div>
@@ -477,11 +465,11 @@
                         </div>
                         <h3 class="font-orbitron font-bold text-xl mb-2">Personal Portfolio</h3>
                         <p class="text-gray-400 text-sm leading-relaxed mb-6 font-sans">
-                            A hyper-immersive 3D responsive cinematic portfolio featuring glassmorphism and neon cyber aesthetics.
+                            A hyper-immersive responsive cinematic portfolio featuring glassmorphism and neon cyber aesthetics.
                         </p>
                     </div>
                     <div class="flex items-center justify-between pt-4 border-t border-white/10 text-xs font-mono text-gray-300">
-                        <span>Three.js / Tailwind</span>
+                        <span>Tailwind / HTML</span>
                         <span class="text-accentViolet font-bold">DEPLOYED</span>
                     </div>
                 </div>
@@ -525,53 +513,71 @@
         </div>
     </section>
 
-    <!-- Editor Showcase / Video Reels Section -->
-    <section id="editor-showcase" class="py-24 px-6 relative">
+    <!-- Dedicated Video Editing Studio Section with Instagram ID & Video Showcase -->
+    <section id="video-editing" class="py-24 px-6 relative">
         <div class="max-w-6xl mx-auto" data-aos="fade-up" data-aos-mirror="true">
-            <div class="glass-panel rounded-3xl p-8 md:p-12 border border-cyberPink/40 relative overflow-hidden">
-                <div class="absolute -left-20 -top-20 w-64 h-64 bg-cyberPink/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="glass-panel rounded-3xl p-8 md:p-12 border border-cyberPink/50 relative overflow-hidden">
+                <div class="absolute -right-20 -top-20 w-64 h-64 bg-cyberPink/10 rounded-full blur-3xl pointer-events-none"></div>
 
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
                     <div>
-                        <span class="px-3 py-1 rounded-full text-xs font-mono bg-cyberPink/20 text-cyberPink border border-cyberPink/30 uppercase">Video Editor Portfolio</span>
+                        <span class="px-3 py-1 rounded-full text-xs font-mono bg-cyberPink/20 text-cyberPink border border-cyberPink/30 uppercase">Professional Video Editing Studio</span>
                         <h2 class="font-orbitron text-3xl md:text-4xl font-bold mt-2">
-                            Cinematic Reels &amp; <span class="text-cyberPink">Edits</span>
+                            Instagram Reels &amp; <span class="text-cyberPink">Visual Edits</span>
                         </h2>
                     </div>
-                    <a href="https://www.instagram.com/harshfx.exe/" target="_blank" class="px-6 py-3 rounded-xl bg-cyberPink text-white font-orbitron font-bold text-xs uppercase hover:bg-pink-700 transition shadow-lg shadow-cyberPink/40 flex items-center gap-2">
-                        <i class="fab fa-instagram"></i> View Instagram ID (@harshfx.exe)
+                    <a href="https://www.instagram.com/harshfx.exe/" target="_blank" class="px-6 py-3 rounded-xl bg-gradient-to-r from-cyberPink to-rose-600 text-white font-orbitron font-bold text-xs uppercase hover:scale-105 transition shadow-lg shadow-cyberPink/40 flex items-center gap-2">
+                        <i class="fab fa-instagram"></i> @harshfx.exe (Instagram ID)
                     </a>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Reel Card 1 -->
-                    <div class="glass-panel p-6 rounded-2xl border border-white/10 text-center space-y-4 hover:border-cyberPink transition">
-                        <div class="w-12 h-12 mx-auto rounded-full bg-cyberPink/10 flex items-center justify-center text-cyberPink text-xl">
-                            <i class="fas fa-play"></i>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Video Card 1 -->
+                    <div class="glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-cyberPink transition group">
+                        <div class="h-48 bg-panelBg flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-darkBg to-transparent opacity-80"></div>
+                            <i class="fas fa-play-circle text-5xl text-cyberPink group-hover:scale-125 transition duration-300 z-10"></i>
+                            <div class="absolute bottom-3 left-3 text-xs font-mono text-cyberCyan">00:00:15:00 / EDIT #1</div>
                         </div>
-                        <h3 class="font-orbitron font-bold text-lg">High-Pace Montage</h3>
-                        <p class="text-xs text-gray-400 font-sans">Dynamic beat sync, color grading, and seamless transitions tailored for social media impact.</p>
-                        <div class="text-[10px] font-mono text-cyberPink uppercase">@harshfx.exe production</div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-orbitron font-bold text-lg">Cinematic Montage &amp; Beat Sync</h3>
+                            <p class="text-xs text-gray-400 font-sans">High-energy edits featuring precision cutting, vibrant color grading, and custom effects.</p>
+                            <a href="https://www.instagram.com/harshfx.exe/" target="_blank" class="inline-flex items-center gap-2 text-xs font-mono text-cyberPink hover:underline pt-2">
+                                Watch on @harshfx.exe <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
                     </div>
 
-                    <!-- Reel Card 2 -->
-                    <div class="glass-panel p-6 rounded-2xl border border-white/10 text-center space-y-4 hover:border-cyberPink transition">
-                        <div class="w-12 h-12 mx-auto rounded-full bg-cyberPink/10 flex items-center justify-center text-cyberPink text-xl">
-                            <i class="fas fa-film"></i>
+                    <!-- Video Card 2 -->
+                    <div class="glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-cyberPink transition group">
+                        <div class="h-48 bg-panelBg flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-darkBg to-transparent opacity-80"></div>
+                            <i class="fas fa-play-circle text-5xl text-cyberPink group-hover:scale-125 transition duration-300 z-10"></i>
+                            <div class="absolute bottom-3 left-3 text-xs font-mono text-cyberCyan">00:00:20:00 / EDIT #2</div>
                         </div>
-                        <h3 class="font-orbitron font-bold text-lg">Cyberpunk / Sci-Fi Edits</h3>
-                        <p class="text-xs text-gray-400 font-sans">Immersive visual effects, futuristic sound design, and cinematic color palettes.</p>
-                        <div class="text-[10px] font-mono text-cyberPink uppercase">Visual Effects &amp; Color</div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-orbitron font-bold text-lg">Cyberpunk &amp; Sci-Fi Visuals</h3>
+                            <p class="text-xs text-gray-400 font-sans">Futuristic aesthetic styling, glitch transitions, and immersive soundscape synchronization.</p>
+                            <a href="https://www.instagram.com/harshfx.exe/" target="_blank" class="inline-flex items-center gap-2 text-xs font-mono text-cyberPink hover:underline pt-2">
+                                Watch on @harshfx.exe <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
                     </div>
 
-                    <!-- Reel Card 3 -->
-                    <div class="glass-panel p-6 rounded-2xl border border-white/10 text-center space-y-4 hover:border-cyberPink transition">
-                        <div class="w-12 h-12 mx-auto rounded-full bg-cyberPink/10 flex items-center justify-center text-cyberPink text-xl">
-                            <i class="fas fa-bolt"></i>
+                    <!-- Video Card 3 -->
+                    <div class="glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-cyberPink transition group">
+                        <div class="h-48 bg-panelBg flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-darkBg to-transparent opacity-80"></div>
+                            <i class="fas fa-play-circle text-5xl text-cyberPink group-hover:scale-110 transition duration-300 z-10"></i>
+                            <div class="absolute bottom-3 left-3 text-xs font-mono text-cyberCyan">00:00:30:00 / EDIT #3</div>
                         </div>
-                        <h3 class="font-orbitron font-bold text-lg">AI &amp; Tech Showcases</h3>
-                        <p class="text-xs text-gray-400 font-sans">Blending technical coding project walkthroughs with aesthetic short-form edits.</p>
-                        <div class="text-[10px] font-mono text-cyberPink uppercase">Content Creation</div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-orbitron font-bold text-lg">AI &amp; Tech Creator Showcase</h3>
+                            <p class="text-xs text-gray-400 font-sans">Blending technical coding projects with smooth short-form storytelling edits.</p>
+                            <a href="https://www.instagram.com/harshfx.exe/" target="_blank" class="inline-flex items-center gap-2 text-xs font-mono text-cyberPink hover:underline pt-2">
+                                Watch on @harshfx.exe <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -644,9 +650,8 @@
         </div>
     </section>
 
-    <!-- JavaScript for AOS (mirror enabled), Intro Screen & Three.js -->
+    <!-- JavaScript for AOS & Intro Dismiss -->
     <script>
-        // Initialize AOS with mirror: true so animations trigger repeatedly on scroll up & down
         AOS.init({
             once: false,
             mirror: true,
@@ -654,72 +659,10 @@
             duration: 800,
         });
 
-        // Intro Screen Dismiss Function
         function enterPortfolio() {
             const intro = document.getElementById('intro-screen');
             intro.classList.add('fade-out');
         }
-
-        // Three.js Background Particles
-        const container = document.getElementById('canvas-container');
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        container.appendChild(renderer.domElement);
-
-        const particlesGeometry = new THREE.BufferGeometry();
-        const particlesCount = 1500;
-        const posArray = new Float32Array(particlesCount * 3);
-
-        for(let i = 0; i < particlesCount * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 18;
-        }
-
-        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-
-        const particlesMaterial = new THREE.PointsMaterial({
-            size: 0.03,
-            color: '#00f0ff',
-            transparent: true,
-            opacity: 0.85,
-            blending: THREE.AdditiveBlending
-        });
-
-        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-        scene.add(particlesMesh);
-
-        camera.position.z = 3;
-
-        let mouseX = 0;
-        let mouseY = 0;
-
-        document.addEventListener('mousemove', (event) => {
-            mouseX = event.clientX / window.innerWidth - 0.5;
-            mouseY = event.clientY / window.innerHeight - 0.5;
-        });
-
-        const clock = new THREE.Clock();
-
-        function animate() {
-            requestAnimationFrame(animate);
-            const elapsedTime = clock.getElapsedTime();
-
-            particlesMesh.rotation.y = elapsedTime * 0.04 + mouseX * 0.4;
-            particlesMesh.rotation.x = elapsedTime * 0.02 + mouseY * 0.4;
-
-            renderer.render(scene, camera);
-        }
-
-        animate();
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
     </script>
 </body>
 </html>
