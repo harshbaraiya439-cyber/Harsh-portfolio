@@ -41,7 +41,7 @@
             overflow-x: hidden;
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        /* Fast Loading CSS Background Mesh */
+        /* Fast Loading Main Background */
         .cinematic-bg {
             background: linear-gradient(to bottom, rgba(3,7,18,0.92), rgba(3,7,18,0.99)), url('portfolio-bg.png.png');
             background-size: cover;
@@ -66,7 +66,8 @@
         .pink-glow {
             text-shadow: 0 0 25px rgba(255, 0, 85, 0.8);
         }
-        /* Full Page Intro Screen with cinematic image */
+        
+        /* FULL SCREEN INTRO SCREEN WITH intro.png.png BACKGROUND */
         #intro-screen {
             position: fixed;
             top: 0;
@@ -80,25 +81,26 @@
             overflow: hidden;
             transition: opacity 0.8s ease, visibility 0.8s ease;
         }
-        .intro-bg-img {
+        .intro-bg-image {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.4) contrast(1.1);
-            animation: introZoom 10s ease-in-out infinite alternate;
+            filter: brightness(0.45) contrast(1.15);
+            animation: cinematicZoom 8s ease-in-out infinite alternate;
             z-index: -1;
         }
-        @keyframes introZoom {
+        @keyframes cinematicZoom {
             0% { transform: scale(1); }
-            100% { transform: scale(1.08); }
+            100% { transform: scale(1.07); }
         }
         .fade-out {
             opacity: 0;
             visibility: hidden;
         }
+
         /* Profile Image Animation */
         .animated-profile {
             transition: transform 0.4s ease;
@@ -127,9 +129,10 @@
 </head>
 <body class="selection:bg-cyberCyan selection:text-darkBg cinematic-bg">
 
-    <!-- FULL PAGE CINEMATIC INTRO SCREEN -->
+    <!-- FULL SCREEN INTRO PAGE WITH intro.png.png -->
     <div id="intro-screen">
-        <img src="intro.png.png" alt="Intro Background" class="intro-bg-img">
+        <!-- intro.png.png as Full Screen Background -->
+        <img src="intro.png.png" alt="Intro Background" class="intro-bg-image">
         <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/60 to-transparent"></div>
         
         <div class="relative z-10 text-center px-6 max-w-3xl space-y-6" data-aos="zoom-in" data-aos-duration="1000">
